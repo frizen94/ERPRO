@@ -460,3 +460,252 @@ export type TipoEscala = typeof tiposEscala.$inferSelect;
 export type StatusDiaria = typeof statusDiaria.$inferSelect;
 export type TipoArma = typeof tiposArma.$inferSelect;
 export type ControleArmamento = typeof controleArmamento.$inferSelect;
+
+// API Types Namespace
+export namespace API {
+  export type Activation = {
+    uid: string;
+    token: string;
+  };
+
+  export type Afastamento = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    observacao?: string;
+    processo_ini?: string;
+    ato_ini?: string;
+    diario_oficial_ini?: string | null;
+    pagina_do_ini?: number | null;
+    data_inicio: string;
+    notificado_ini?: string | null;
+    processo_fim?: string;
+    ato_fim?: string;
+    diario_oficial_fim?: string | null;
+    pagina_do_fim?: number | null;
+    data_fim?: string | null;
+    notificado_fim?: string | null;
+    tipo_afastamento: number;
+    pessoa: number;
+    history_user?: number | null;
+  };
+
+  export type Cargo = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    nome: string;
+    sigla: string;
+    carga_horaria: number;
+  };
+
+  export type Estado = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active: boolean;
+    nome: string;
+    sigla: string;
+    tipo_de_geo: number | null;
+    pais: number;
+  };
+
+  export type Municipio = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active: boolean;
+    nome: string;
+    tipo_de_geo: number | null;
+    estado: number;
+    regiao_planejamento: number | null;
+  };
+
+  export type Unidade = {
+    id: number;
+    nome: string;
+    sigla: string;
+    email: string;
+    telefone: string;
+    cod_unidade_sigi: string | null;
+    tipo_unidade: number | null;
+    endereco: number | null;
+    id_unidade_superior: number | null;
+    ais: number | null;
+    externo: boolean;
+    unidade_ativa?: boolean;
+    registra_bo: boolean;
+    registra_procedimento: boolean;
+    geo?: {
+      type: 'Point' | 'LineString' | 'Polygon';
+      coordinates: any;
+    } | null;
+  };
+
+  export type TipoAfastamento = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    tipo_afastamento: string;
+  };
+
+  export type TipoEscala = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    nome: string;
+    descricao: text;
+    horaInicio: string; // HH:MM
+    horaFim: string; // HH:MM
+    cargaHoraria: number; // em horas
+  };
+
+  export type StatusDiaria = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    nome: string;
+    descricao: text;
+  };
+
+  export type Diaria = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    data_inicio: string;
+    data_fim: string;
+    execucao_antecidada?: boolean;
+    objetivo: string;
+    numero: string;
+    origem_cidade: number;
+    destino_cidade: number;
+    tipo_diaria?: number | null;
+    unidade: number;
+    unidade_interestadual?: number | null;
+    operacao_diaria?: number | null;
+  };
+
+  export type PessoaRH = {
+    id: number;
+    cargo_nivel_vigente_nome: string;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    nome: string;
+    nome_social?: string | null;
+    pai?: string | null;
+    mae?: string | null;
+    cpf: string;
+    pis_pasep?: string;
+    data_nascimento: string;
+    email_funcional?: string | null;
+    email_pessoal?: string | null;
+    estado_civil?: number | null;
+    sexo: number;
+    cor_raca?: number | null;
+    orientacao_sexual?: number | null;
+    identidade_de_genero?: number | null;
+    grupo_sanguineo?: number | null;
+    nascimento_cidade?: number | null;
+    endereco?: number | null;
+    status?: number | null;
+    unidade_lotacao_vigente: number | null;
+    cargo_nivel_vigente: number | null;
+    history_user?: number | null;
+  };
+
+  export type DadosFuncionais = {
+    matricula: string;
+    edital_nomeacao?: number | null;
+    classificacao_concurso?: number | null;
+    tipo_nomeacao?: number | null;
+    tipo_origem_vaga?: number;
+    data_nomeacao?: string | null;
+    data_posse?: string;
+    data_exercicio?: string | null;
+  };
+
+  export type DadosBancarios = {
+    id: number;
+    tipo_banco: number;
+    agencia: string;
+    conta: string;
+  };
+
+  export type Escala = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    data_escala: string;
+    hora_inicio?: string | null;
+    hora_fim?: string | null;
+    status: string;
+    observacoes?: string | null;
+    pessoa: number;
+    tipo_escala: number;
+    unidade: number;
+  };
+
+  export type ItemArma = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    data_aquisicao: string;
+    tombo: string;
+    observacao: string;
+    capacidade?: string | null;
+    numero_de_serie: string;
+    status: number;
+    modelo: number;
+    orgao: number;
+    origem?: number | null;
+    conservacao: number;
+    acabamento: number;
+    calibre: number;
+    cano: number;
+  };
+
+  export type ControleArmamento = {
+    id: number;
+    created_at: string | null;
+    updated_at: string | null;
+    is_active?: boolean;
+    data_retirada: string;
+    data_devolucao?: string | null;
+    finalidade?: string | null;
+    observacoes?: string | null;
+    armamento: number;
+    pessoa: number;
+  };
+
+  // Type definitions for paginated results
+  export type Paginated<T> = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: T[];
+  };
+
+  // Response types for API endpoints
+  export type ApiResponse<T> = {
+    success: boolean;
+    data: T;
+    message?: string;
+    errors?: string[];
+  };
+
+  export type ApiError = {
+    success: false;
+    message: string;
+    errors?: string[];
+    code?: string;
+  };
+}

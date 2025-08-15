@@ -1,0 +1,552 @@
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema ERP - Gestão Corporativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f8fafc',
+                            500: '#0f172a',
+                            600: '#0c1420',
+                            700: '#0a111c'
+                        },
+                        accent: {
+                            500: '#10b981',
+                            600: '#059669'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="h-full bg-gray-50 dark:bg-gray-900 font-sans transition-colors">
+    <!-- @COMPONENT: Layout [Root layout with sidebar and main content] -->
+    <div class="flex h-full">
+        
+        <!-- @COMPONENT: Sidebar [Main navigation sidebar] -->
+        <aside class="hidden lg:flex lg:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary-500 dark:bg-accent-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-building text-white text-sm"></i>
+                        </div>
+                        <span class="text-lg font-semibold text-gray-900 dark:text-white">ERP Sistema</span>
+                    </div>
+                    
+                    <!-- @FUNCTIONALITY: Theme toggle should persist preference in localStorage -->
+                    <button id="themeToggle" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+                    <!-- Dashboard -->
+                    <a href="#" class="bg-primary-50 border-r-4 border-primary-500 text-primary-700 dark:bg-primary-600 dark:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                        <i class="fas fa-tachometer-alt text-primary-500 dark:text-white mr-3 flex-shrink-0 h-5 w-5"></i>
+                        Dashboard
+                    </a>
+
+                    <!-- Módulo de Pessoas -->
+                    <div class="space-y-1">
+                        <div class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider px-3 py-2">
+                            Gestão de Pessoas
+                        </div>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-users text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Funcionários
+                        </a>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-user-clock text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Afastamentos
+                        </a>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-university text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Dados Bancários
+                        </a>
+                    </div>
+
+                    <!-- Módulo de Frequência -->
+                    <div class="space-y-1">
+                        <div class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider px-3 py-2">
+                            Frequência Avançada
+                        </div>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-calendar-alt text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Escalas
+                        </a>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-exchange-alt text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Substituições
+                        </a>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-umbrella-beach text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Licenças
+                        </a>
+                    </div>
+
+                    <!-- Outros Módulos -->
+                    <div class="space-y-1">
+                        <div class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider px-3 py-2">
+                            Outros Módulos
+                        </div>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-crosshairs text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Gestão de Armas
+                        </a>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-route text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Diárias
+                        </a>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-chart-bar text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Relatórios
+                        </a>
+                        <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i class="fas fa-paperclip text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 mr-3 flex-shrink-0 h-5 w-5"></i>
+                            Anexos
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- User Profile -->
+                <div class="flex-shrink-0 p-4 border-t border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-gray-600 dark:text-gray-300"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 dark:text-white truncate" data-bind="currentUser.name">Admin Sistema</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Administrador</p>
+                        </div>
+                        <button class="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- @END_COMPONENT: Sidebar -->
+
+        <!-- @COMPONENT: MainContent [Main content area with header and body] -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <!-- Top Header -->
+            <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+                    <!-- Mobile menu button -->
+                    <button class="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <!-- Breadcrumbs -->
+                    <nav class="hidden sm:flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                        <a href="#" class="hover:text-gray-700 dark:hover:text-gray-200">ERP Sistema</a>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                        <span class="text-gray-900 dark:text-white font-medium">Dashboard</span>
+                    </nav>
+
+                    <!-- Right side -->
+                    <div class="flex items-center space-x-4">
+                        <!-- Notifications -->
+                        <button class="relative p-2 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-bell"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+
+                        <!-- Search -->
+                        <div class="relative hidden md:block">
+                            <input type="search" placeholder="Buscar..." class="w-64 pl-10 pr-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 border-0 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:bg-white dark:focus:bg-gray-600 transition-colors" />
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto">
+                <div class="p-4 sm:p-6 lg:p-8">
+                    
+                    <!-- Welcome Section -->
+                    <div class="mb-8">
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Bem-vindo ao Sistema ERP</h1>
+                        <p class="text-gray-600 dark:text-gray-400">Visão geral das operações e métricas principais do sistema.</p>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <!-- @MAP: statsCards.map(card => ( -->
+                        <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Total de Funcionários</p>
+                                    <p class="text-2xl font-bold text-gray-900 dark:text-white" data-bind="stats.totalEmployees">1,247</p>
+                                </div>
+                                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-users text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-sm text-green-600 dark:text-green-400 font-medium">+2.5% </span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">vs. mês anterior</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Escalas Ativas</p>
+                                    <p class="text-2xl font-bold text-gray-900 dark:text-white" data-bind="stats.activeSchedules">89</p>
+                                </div>
+                                <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-calendar-check text-green-600 dark:text-green-400"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-sm text-green-600 dark:text-green-400 font-medium">+5.2% </span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">vs. mês anterior</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Diárias Pendentes</p>
+                                    <p class="text-2xl font-bold text-gray-900 dark:text-white" data-bind="stats.pendingDiarias">23</p>
+                                </div>
+                                <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-clock text-yellow-600 dark:text-yellow-400"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-sm text-red-600 dark:text-red-400 font-medium">+12.1% </span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">vs. mês anterior</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Licenças Ativas</p>
+                                    <p class="text-2xl font-bold text-gray-900 dark:text-white" data-bind="stats.activeLicenses">156</p>
+                                </div>
+                                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-umbrella-beach text-purple-600 dark:text-purple-400"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-sm text-green-600 dark:text-green-400 font-medium">-1.8% </span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">vs. mês anterior</span>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <!-- Main Dashboard Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Recent Activities -->
+                        <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+                            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Atividades Recentes</h3>
+                            </div>
+                            <div class="p-6">
+                                <div class="space-y-4">
+                                    <!-- @MAP: recentActivities.map(activity => ( -->
+                                    <div class="flex items-start space-x-3" data-mock="true">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-user-plus text-blue-600 dark:text-blue-400 text-xs"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-gray-900 dark:text-white">
+                                                <span class="font-medium" data-bind="activity.user">João Silva</span> 
+                                                criou um novo funcionário
+                                            </p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400" data-bind="activity.time">há 2 minutos</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start space-x-3" data-mock="true">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-exclamation-triangle text-yellow-600 dark:text-yellow-400 text-xs"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-gray-900 dark:text-white">
+                                                <span class="font-medium" data-bind="activity.user">Maria Santos</span> 
+                                                aprovou diária pendente
+                                            </p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400" data-bind="activity.time">há 15 minutos</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start space-x-3" data-mock="true">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-calendar-check text-green-600 dark:text-green-400 text-xs"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-gray-900 dark:text-white">
+                                                Sistema atualizou escalas do mês
+                                            </p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">há 1 hora</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start space-x-3" data-mock="true">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-ban text-red-600 dark:text-red-400 text-xs"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-gray-900 dark:text-white">
+                                                <span class="font-medium" data-bind="activity.user">Carlos Oliveira</span> 
+                                                registrou afastamento médico
+                                            </p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">há 2 horas</p>
+                                        </div>
+                                    </div>
+                                    <!-- @END_MAP )) -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions & Alerts -->
+                        <div class="space-y-6">
+                            <!-- Quick Actions -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+                                <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Ações Rápidas</h3>
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <button class="w-full flex items-center justify-between p-3 text-left bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-user-plus text-primary-500"></i>
+                                            <span class="text-sm font-medium text-gray-900 dark:text-white">Novo Funcionário</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-gray-400"></i>
+                                    </button>
+
+                                    <button class="w-full flex items-center justify-between p-3 text-left bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-calendar-plus text-primary-500"></i>
+                                            <span class="text-sm font-medium text-gray-900 dark:text-white">Criar Escala</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-gray-400"></i>
+                                    </button>
+
+                                    <button class="w-full flex items-center justify-between p-3 text-left bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-route text-primary-500"></i>
+                                            <span class="text-sm font-medium text-gray-900 dark:text-white">Nova Diária</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-gray-400"></i>
+                                    </button>
+
+                                    <button class="w-full flex items-center justify-between p-3 text-left bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-file-alt text-primary-500"></i>
+                                            <span class="text-sm font-medium text-gray-900 dark:text-white">Gerar Relatório</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-gray-400"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- System Alerts -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+                                <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Alertas do Sistema</h3>
+                                </div>
+                                <div class="p-6 space-y-4">
+                                    <!-- @MAP: systemAlerts.map(alert => ( -->
+                                    <div class="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg" data-mock="true">
+                                        <div class="flex items-start space-x-2">
+                                            <i class="fas fa-exclamation-triangle text-yellow-600 dark:text-yellow-400 mt-0.5"></i>
+                                            <div>
+                                                <p class="text-sm font-medium text-yellow-800 dark:text-yellow-200">Licenças Vencendo</p>
+                                                <p class="text-xs text-yellow-700 dark:text-yellow-300">3 licenças médicas vencem esta semana</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg" data-mock="true">
+                                        <div class="flex items-start space-x-2">
+                                            <i class="fas fa-times-circle text-red-600 dark:text-red-400 mt-0.5"></i>
+                                            <div>
+                                                <p class="text-sm font-medium text-red-800 dark:text-red-200">Sistema Sobregado</p>
+                                                <p class="text-xs text-red-700 dark:text-red-300">Alto número de usuários simultâneos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg" data-mock="true">
+                                        <div class="flex items-start space-x-2">
+                                            <i class="fas fa-info-circle text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                            <div>
+                                                <p class="text-sm font-medium text-blue-800 dark:text-blue-200">Backup Agendado</p>
+                                                <p class="text-xs text-blue-700 dark:text-blue-300">Próximo backup em 2 horas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- @END_MAP )) -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Schedules Table -->
+                    <div class="mt-8 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+                        <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Escalas de Hoje</h3>
+                            <button class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-500 font-medium">
+                                Ver todas
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50 dark:bg-gray-700">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Funcionário</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tipo</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Horário</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                    <!-- @MAP: todaySchedules.map(schedule => ( -->
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" data-mock="true">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mr-3">
+                                                    <i class="fas fa-user text-gray-600 dark:text-gray-300 text-sm"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900 dark:text-white" data-bind="schedule.employee">João Silva</div>
+                                                    <div class="text-sm text-gray-500 dark:text-gray-400">Matrícula: 12345</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="inline-flex px-2 py-1 text-xs font-semibold bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Expediente</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white" data-bind="schedule.time">08:00 - 17:00</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="inline-flex px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Ativo</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                            <button class="text-primary-600 dark:text-primary-400 hover:text-primary-500">Editar</button>
+                                            <button class="text-red-600 dark:text-red-400 hover:text-red-500">Cancelar</button>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" data-mock="true">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mr-3">
+                                                    <i class="fas fa-user text-gray-600 dark:text-gray-300 text-sm"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900 dark:text-white">Maria Santos</div>
+                                                    <div class="text-sm text-gray-500 dark:text-gray-400">Matrícula: 67890</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="inline-flex px-2 py-1 text-xs font-semibold bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">12x36</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">07:00 - 19:00</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="inline-flex px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Ativo</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                            <button class="text-primary-600 dark:text-primary-400 hover:text-primary-500">Editar</button>
+                                            <button class="text-red-600 dark:text-red-400 hover:text-red-500">Cancelar</button>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" data-mock="true">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mr-3">
+                                                    <i class="fas fa-user text-gray-600 dark:text-gray-300 text-sm"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900 dark:text-white">Carlos Oliveira</div>
+                                                    <div class="text-sm text-gray-500 dark:text-gray-400">Matrícula: 11111</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="inline-flex px-2 py-1 text-xs font-semibold bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">Plantão</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">19:00 - 07:00</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="inline-flex px-2 py-1 text-xs font-semibold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Licença</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                            <button class="text-primary-600 dark:text-primary-400 hover:text-primary-500">Editar</button>
+                                            <button class="text-red-600 dark:text-red-400 hover:text-red-500">Cancelar</button>
+                                        </td>
+                                    </tr>
+                                    <!-- @END_MAP )) -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+        <!-- @END_COMPONENT: MainContent -->
+    </div>
+    <!-- @END_COMPONENT: Layout -->
+
+    <!-- @FUNCTIONALITY: JavaScript for theme toggle and basic interactions -->
+    <script>
+        (() => {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference or default to 'light'
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            html.classList.toggle('dark', currentTheme === 'dark');
+            
+            themeToggle?.addEventListener('click', () => {
+                const isDark = html.classList.contains('dark');
+                const newTheme = isDark ? 'light' : 'dark';
+                
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // TODO: Implement business logic for:
+            // - Real-time dashboard updates
+            // - API calls for fetching actual data
+            // - Navigation state management
+            // - Form submissions and validations
+            // - File upload handling for anexos
+            // - User authentication and authorization
+            // - Notification system integration
+            // - Advanced search functionality
+            // - Report generation
+            // - Calendar scheduling system
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SigmaERP - Sistema Integrado de Gestão Administrativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        },
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans antialiased">
+    <!-- @COMPONENT: MainLayout -->
+    <div class="min-h-screen flex bg-slate-50">
+        
+        <!-- @COMPONENT: Sidebar -->
+        <aside class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg border-r border-slate-200 z-30">
+            <div class="flex flex-col h-full">
+                <!-- Logo Header -->
+                <div class="flex items-center px-6 py-4 border-b border-slate-200">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-building text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-lg font-semibold text-slate-900">SigmaERP</h1>
+                            <p class="text-xs text-slate-500">Sistema Integrado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Menu -->
+                <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+                    <!-- Dashboard -->
+                    <a href="#" class="flex items-center px-3 py-2.5 text-sm font-medium text-primary-700 bg-primary-50 rounded-lg group" data-active="true">
+                        <i class="fas fa-chart-pie mr-3 text-primary-600"></i>
+                        Dashboard
+                    </a>
+
+                    <!-- Gestão de Pessoas -->
+                    <div class="space-y-1">
+                        <button class="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg group" data-expandable="true">
+                            <div class="flex items-center">
+                                <i class="fas fa-users mr-3 text-slate-500"></i>
+                                Gestão de Pessoas
+                            </div>
+                            <i class="fas fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                        <div class="ml-6 space-y-1">
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Servidores</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Terceirizados</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Fichas Funcionais</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Dados Bancários</a>
+                        </div>
+                    </div>
+
+                    <!-- Frequência -->
+                    <div class="space-y-1">
+                        <button class="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg group">
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar-alt mr-3 text-slate-500"></i>
+                                Frequência
+                            </div>
+                            <i class="fas fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                        <div class="ml-6 space-y-1">
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Escalas</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Afastamentos</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Substituições</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Licenças</a>
+                        </div>
+                    </div>
+
+                    <!-- Diárias -->
+                    <a href="#" class="flex items-center px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg group">
+                        <i class="fas fa-receipt mr-3 text-slate-500"></i>
+                        Diárias
+                        <span class="ml-auto bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded-full">3</span>
+                    </a>
+
+                    <!-- Armamento -->
+                    <a href="#" class="flex items-center px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg group">
+                        <i class="fas fa-shield-alt mr-3 text-slate-500"></i>
+                        Armamento
+                    </a>
+
+                    <!-- Relatórios -->
+                    <div class="space-y-1">
+                        <button class="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg group">
+                            <div class="flex items-center">
+                                <i class="fas fa-chart-bar mr-3 text-slate-500"></i>
+                                Relatórios
+                            </div>
+                            <i class="fas fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                        <div class="ml-6 space-y-1">
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Pessoal</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Frequência</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Financeiro</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md">Personalizados</a>
+                        </div>
+                    </div>
+
+                    <!-- Configurações -->
+                    <a href="#" class="flex items-center px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg group">
+                        <i class="fas fa-cog mr-3 text-slate-500"></i>
+                        Configurações
+                    </a>
+                </nav>
+
+                <!-- User Profile -->
+                <div class="px-4 py-4 border-t border-slate-200">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-slate-300 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-slate-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-slate-900 truncate" data-bind="user.name">João Silva</p>
+                            <p class="text-xs text-slate-500 truncate">Administrador</p>
+                        </div>
+                        <button class="text-slate-400 hover:text-slate-600">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- @END_COMPONENT: Sidebar -->
+
+        <!-- @COMPONENT: MainContent -->
+        <main class="flex-1 ml-64">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-20">
+                <div class="px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <!-- Breadcrumbs -->
+                        <nav class="flex items-center space-x-2 text-sm">
+                            <a href="#" class="text-slate-500 hover:text-slate-700">SigmaERP</a>
+                            <i class="fas fa-chevron-right text-slate-400 text-xs"></i>
+                            <span class="text-slate-900 font-medium">Dashboard</span>
+                        </nav>
+
+                        <!-- Header Actions -->
+                        <div class="flex items-center space-x-4">
+                            <!-- Theme Toggle -->
+                            <button class="p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                            
+                            <!-- Notifications -->
+                            <button class="relative p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100">
+                                <i class="fas fa-bell"></i>
+                                <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                            </button>
+
+                            <!-- Quick Actions -->
+                            <div class="relative">
+                                <button class="flex items-center space-x-2 px-3 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">
+                                    <i class="fas fa-plus text-sm"></i>
+                                    <span class="text-sm font-medium">Novo</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-6">
+                <!-- Page Title -->
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-slate-900 mb-2">Dashboard</h1>
+                    <p class="text-slate-600">Visão geral do sistema - <span data-bind="currentDate">Segunda-feira, 15 de Janeiro de 2024</span></p>
+                </div>
+
+                <!-- @COMPONENT: StatsCards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- Total de Servidores -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-users text-blue-600 text-xl"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600 font-medium flex items-center">
+                                <i class="fas fa-arrow-up text-xs mr-1"></i>
+                                +2.5%
+                            </span>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900 mb-1" data-bind="stats.totalServers">1,247</p>
+                            <p class="text-sm text-slate-600">Total de Servidores</p>
+                        </div>
+                    </div>
+
+                    <!-- Afastamentos Ativos -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-user-clock text-amber-600 text-xl"></i>
+                            </div>
+                            <span class="text-sm text-amber-600 font-medium flex items-center">
+                                <i class="fas fa-minus text-xs mr-1"></i>
+                                -1.2%
+                            </span>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900 mb-1" data-bind="stats.activeLeaves">34</p>
+                            <p class="text-sm text-slate-600">Afastamentos Ativos</p>
+                        </div>
+                    </div>
+
+                    <!-- Diárias Pendentes -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-receipt text-purple-600 text-xl"></i>
+                            </div>
+                            <span class="text-sm text-red-600 font-medium flex items-center">
+                                <i class="fas fa-exclamation-triangle text-xs mr-1"></i>
+                                Urgente
+                            </span>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900 mb-1" data-bind="stats.pendingExpenses">12</p>
+                            <p class="text-sm text-slate-600">Diárias Pendentes</p>
+                        </div>
+                    </div>
+
+                    <!-- Armamento em Uso -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-emerald-600 text-xl"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600 font-medium flex items-center">
+                                <i class="fas fa-check text-xs mr-1"></i>
+                                OK
+                            </span>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900 mb-1" data-bind="stats.weaponsInUse">156</p>
+                            <p class="text-sm text-slate-600">Armamento em Uso</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: StatsCards -->
+
+                <!-- Content Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- @COMPONENT: RecentActivity -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200">
+                            <div class="px-6 py-4 border-b border-slate-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-lg font-semibold text-slate-900">Atividades Recentes</h3>
+                                    <button class="text-sm text-primary-600 hover:text-primary-700 font-medium">Ver todas</button>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <!-- @MAP: recentActivities.map(activity => ( -->
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-slate-900">
+                                                <span class="font-medium">Maria Santos</span> enviou solicitação de diária
+                                            </p>
+                                            <p class="text-xs text-slate-500">Há 5 minutos</p>
+                                        </div>
+                                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Revisar</button>
+                                    </div>
+
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-slate-900">
+                                                <span class="font-medium">Carlos Oliveira</span> registrou afastamento médico
+                                            </p>
+                                            <p class="text-xs text-slate-500">Há 15 minutos</p>
+                                        </div>
+                                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Ver</button>
+                                    </div>
+
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-slate-900">
+                                                Sistema gerou relatório de frequência mensal
+                                            </p>
+                                            <p class="text-xs text-slate-500">Há 1 hora</p>
+                                        </div>
+                                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Download</button>
+                                    </div>
+
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm text-slate-900">
+                                                <span class="font-medium">Ana Costa</span> atualizou dados bancários
+                                            </p>
+                                            <p class="text-xs text-slate-500">Há 2 horas</p>
+                                        </div>
+                                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Ver</button>
+                                    </div>
+                                </div>
+                                <!-- @END_MAP )) -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- @END_COMPONENT: RecentActivity -->
+
+                    <!-- @COMPONENT: QuickActions -->
+                    <div class="space-y-6">
+                        <!-- Quick Actions Card -->
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200">
+                            <div class="px-6 py-4 border-b border-slate-200">
+                                <h3 class="text-lg font-semibold text-slate-900">Ações Rápidas</h3>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <button class="w-full flex items-center justify-between px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors" data-event="click:openNewEmployee">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-user-plus text-primary-600"></i>
+                                        <span class="text-sm font-medium text-slate-900">Novo Servidor</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-slate-400 text-xs"></i>
+                                </button>
+
+                                <button class="w-full flex items-center justify-between px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-calendar-plus text-emerald-600"></i>
+                                        <span class="text-sm font-medium text-slate-900">Nova Escala</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-slate-400 text-xs"></i>
+                                </button>
+
+                                <button class="w-full flex items-center justify-between px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-file-medical text-amber-600"></i>
+                                        <span class="text-sm font-medium text-slate-900">Licença Médica</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-slate-400 text-xs"></i>
+                                </button>
+
+                                <button class="w-full flex items-center justify-between px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-chart-line text-purple-600"></i>
+                                        <span class="text-sm font-medium text-slate-900">Gerar Relatório</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-slate-400 text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Alerts Card -->
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200">
+                            <div class="px-6 py-4 border-b border-slate-200">
+                                <h3 class="text-lg font-semibold text-slate-900">Alertas</h3>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <!-- @MAP: alerts.map(alert => ( -->
+                                <div class="flex items-start space-x-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                                    <i class="fas fa-exclamation-triangle text-amber-600 mt-0.5"></i>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-medium text-amber-900">3 diárias vencendo hoje</p>
+                                        <p class="text-xs text-amber-700 mt-1">Necessário aprovação urgente</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                                    <i class="fas fa-clock text-red-600 mt-0.5"></i>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-medium text-red-900">Licenças médicas vencidas</p>
+                                        <p class="text-xs text-red-700 mt-1">5 servidores precisam renovar</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                                    <i class="fas fa-info-circle text-blue-600 mt-0.5"></i>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-medium text-blue-900">Backup realizado</p>
+                                        <p class="text-xs text-blue-700 mt-1">Sistema atualizado às 02:00</p>
+                                    </div>
+                                </div>
+                                <!-- @END_MAP )) -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- @END_COMPONENT: QuickActions -->
+                </div>
+
+                <!-- @COMPONENT: DataTables -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+                    <!-- Escalas de Hoje -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200">
+                        <div class="px-6 py-4 border-b border-slate-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-slate-900">Escalas de Hoje</h3>
+                                <button class="text-sm text-primary-600 hover:text-primary-700 font-medium">Ver calendário</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr class="border-b border-slate-200">
+                                            <th class="text-left pb-3 font-medium text-slate-900">Servidor</th>
+                                            <th class="text-left pb-3 font-medium text-slate-900">Turno</th>
+                                            <th class="text-left pb-3 font-medium text-slate-900">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        <!-- @MAP: todaySchedules.map(schedule => ( -->
+                                        <tr>
+                                            <td class="py-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+                                                        <span class="text-xs font-medium text-slate-600">JS</span>
+                                                    </div>
+                                                    <span class="font-medium text-slate-900" data-bind="schedule.employee">João Silva</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 text-slate-600" data-bind="schedule.shift">08:00 - 17:00</td>
+                                            <td class="py-3">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                                    Presente
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="py-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+                                                        <span class="text-xs font-medium text-slate-600">MC</span>
+                                                    </div>
+                                                    <span class="font-medium text-slate-900">Maria Costa</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 text-slate-600">14:00 - 22:00</td>
+                                            <td class="py-3">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                                    Pendente
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="py-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+                                                        <span class="text-xs font-medium text-slate-600">CO</span>
+                                                    </div>
+                                                    <span class="font-medium text-slate-900">Carlos Oliveira</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 text-slate-600">22:00 - 06:00</td>
+                                            <td class="py-3">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                    Afastado
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <!-- @END_MAP )) -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diárias Recentes -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200">
+                        <div class="px-6 py-4 border-b border-slate-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-slate-900">Diárias Recentes</h3>
+                                <button class="text-sm text-primary-600 hover:text-primary-700 font-medium">Ver todas</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr class="border-b border-slate-200">
+                                            <th class="text-left pb-3 font-medium text-slate-900">Solicitante</th>
+                                            <th class="text-left pb-3 font-medium text-slate-900">Valor</th>
+                                            <th class="text-left pb-3 font-medium text-slate-900">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        <!-- @MAP: recentExpenses.map(expense => ( -->
+                                        <tr>
+                                            <td class="py-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+                                                        <span class="text-xs font-medium text-slate-600">MS</span>
+                                                    </div>
+                                                    <span class="font-medium text-slate-900" data-bind="expense.employee">Maria Santos</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 text-slate-900 font-medium" data-bind="expense.amount">R$ 450,00</td>
+                                            <td class="py-3">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                                    Pendente
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="py-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+                                                        <span class="text-xs font-medium text-slate-600">RO</span>
+                                                    </div>
+                                                    <span class="font-medium text-slate-900">Roberto Silva</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 text-slate-900 font-medium">R$ 320,00</td>
+                                            <td class="py-3">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                                    Aprovada
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="py-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+                                                        <span class="text-xs font-medium text-slate-600">AL</span>
+                                                    </div>
+                                                    <span class="font-medium text-slate-900">Ana Lima</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 text-slate-900 font-medium">R$ 680,00</td>
+                                            <td class="py-3">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                                    Em Análise
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <!-- @END_MAP )) -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: DataTables -->
+            </div>
+        </main>
+        <!-- @END_COMPONENT: MainContent -->
+    </div>
+    <!-- @END_COMPONENT: MainLayout -->
+
+    <!-- @COMPONENT: FloatingActionButton -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="w-14 h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group" data-event="click:openQuickCreate">
+            <i class="fas fa-plus text-xl"></i>
+        </button>
+    </div>
+    <!-- @END_COMPONENT: FloatingActionButton -->
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        
+        // Basic UI interactions (not business logic)
+        (function() {
+            // Sidebar navigation interaction
+            document.querySelectorAll('[data-expandable]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const chevron = this.querySelector('.fa-chevron-down');
+                    const submenu = this.nextElementSibling;
+                    
+                    if (submenu && submenu.classList.contains('ml-6')) {
+                        submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
+                        chevron.style.transform = submenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // Theme toggle placeholder
+            document.querySelector('.fa-moon').parentElement.addEventListener('click', function() {
+                // TODO: Implement theme switching logic
+                console.log('Theme toggle clicked');
+            });
+
+            // Notification button
+            document.querySelector('.fa-bell').parentElement.addEventListener('click', function() {
+                // TODO: Implement notifications panel
+                console.log('Notifications clicked');
+            });
+
+            // Quick action buttons
+            document.querySelectorAll('[data-event]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const action = this.getAttribute('data-event').split(':')[1];
+                    // TODO: Implement specific action handlers
+                    console.log(`Action triggered: ${action}`);
+                });
+            });
+
+            // Mobile responsive behavior
+            function handleResize() {
+                const sidebar = document.querySelector('aside');
+                const main = document.querySelector('main');
+                
+                if (window.innerWidth < 1024) {
+                    // TODO: Implement mobile sidebar toggle
+                    console.log('Mobile view detected');
+                }
+            }
+
+            window.addEventListener('resize', handleResize);
+            handleResize();
+        })();
+    </script>
+</body>
+</html>

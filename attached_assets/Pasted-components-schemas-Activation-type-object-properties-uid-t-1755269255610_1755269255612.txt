@@ -1,0 +1,7558 @@
+components:
+  schemas:
+    Activation:
+      type: object
+      properties:
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - token
+      - uid
+    Afastamento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        observacao:
+          type: string
+        processo_ini:
+          type: string
+          maxLength: 128
+        ato_ini:
+          type: string
+          maxLength: 128
+        diario_oficial_ini:
+          type: string
+          format: date
+          nullable: true
+        pagina_do_ini:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        data_inicio:
+          type: string
+          format: date
+        notificado_ini:
+          type: string
+          format: date
+          nullable: true
+        processo_fim:
+          type: string
+          maxLength: 128
+        ato_fim:
+          type: string
+          maxLength: 128
+        diario_oficial_fim:
+          type: string
+          format: date
+          nullable: true
+        pagina_do_fim:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+        notificado_fim:
+          type: string
+          format: date
+          nullable: true
+        tipo_afastamento:
+          type: integer
+        pessoa:
+          type: integer
+        history_user:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - data_inicio
+      - id
+      - pessoa
+      - tipo_afastamento
+      - updated_at
+    AfastamentoTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+        tipo_afastamento:
+          type: integer
+        terceirizado:
+          type: integer
+      required:
+      - created_at
+      - data_inicio
+      - id
+      - terceirizado
+      - tipo_afastamento
+      - updated_at
+    Ais:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        ais:
+          type: string
+          readOnly: true
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - ais
+      - created_at
+      - id
+      - is_active
+      - tipo_de_geo
+      - updated_at
+    AnexoDiaria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 60
+        file_system:
+          type: string
+          maxLength: 60
+        diaria:
+          type: integer
+        tipo_de_anexo:
+          type: integer
+      required:
+      - created_at
+      - diaria
+      - file_system
+      - id
+      - tipo_de_anexo
+      - updated_at
+    AnexoDiariaComLink:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        is_active:
+          type: boolean
+          title: Ativo?
+        file_system:
+          type: string
+          maxLength: 60
+        tipo_de_anexo:
+          type: integer
+        diaria:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        fileservice_link:
+          type: string
+          nullable: true
+      required:
+      - created_at
+      - diaria
+      - file_system
+      - id
+      - tipo_de_anexo
+      - updated_at
+    AnexoDiariaCreate:
+      type: object
+      properties:
+        nome:
+          type: string
+          maxLength: 60
+        file_system:
+          type: string
+          maxLength: 60
+      required:
+      - file_system
+    AnexoDiariaSimplified:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        fileservice_chunk:
+          $ref: '#/components/schemas/FilesystemChunkSwagger'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 60
+        file_system:
+          type: string
+          maxLength: 60
+        diaria:
+          type: integer
+        tipo_de_anexo:
+          type: integer
+      required:
+      - created_at
+      - diaria
+      - file_system
+      - id
+      - tipo_de_anexo
+      - updated_at
+    AtribuicaoNoCurso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 64
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    Bairro:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        geo:
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Point
+              coordinates:
+                type: array
+                items:
+                  type: number
+                  format: float
+                example:
+                - 12.9721
+                - 77.5933
+                minItems: 2
+                maxItems: 3
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - LineString
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+                    format: float
+                  example:
+                  - 12.9721
+                  - 77.5933
+                  minItems: 2
+                  maxItems: 3
+                example:
+                - - 22.4707
+                  - 70.0577
+                - - 12.9721
+                  - 77.5933
+                minItems: 2
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Polygon
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+                    example:
+                    - 12.9721
+                    - 77.5933
+                    minItems: 2
+                    maxItems: 3
+                  example:
+                  - - 22.4707
+                    - 70.0577
+                  - - 12.9721
+                    - 77.5933
+                  minItems: 4
+                example:
+                - - - 0.0
+                    - 0.0
+                  - - 0.0
+                    - 50.0
+                  - - 50.0
+                    - 50.0
+                  - - 50.0
+                    - 0.0
+                  - - 0.0
+                    - 0.0
+          readOnly: true
+          nullable: true
+        nome:
+          type: string
+          readOnly: true
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+        municipio:
+          type: integer
+          readOnly: true
+      required:
+      - created_at
+      - geo
+      - id
+      - is_active
+      - municipio
+      - nome
+      - tipo_de_geo
+      - updated_at
+    BairroList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          readOnly: true
+        municipio:
+          type: integer
+          readOnly: true
+      required:
+      - id
+      - municipio
+      - nome
+    Bancos:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        banco:
+          type: string
+          maxLength: 45
+        agencia:
+          type: string
+          maxLength: 10
+        conta:
+          type: string
+          maxLength: 20
+        tipo_banco:
+          type: integer
+        tipo_conta:
+          type: integer
+          nullable: true
+        pessoa:
+          type: integer
+        history_user:
+          type: integer
+          nullable: true
+      required:
+      - agencia
+      - banco
+      - conta
+      - created_at
+      - id
+      - pessoa
+      - tipo_banco
+      - updated_at
+    CNH:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+        numero_documento:
+          type: string
+          maxLength: 20
+        validade:
+          type: string
+          format: date
+        categoria_cnh:
+          type: integer
+        uf:
+          type: integer
+        pessoa:
+          type: integer
+      required:
+      - categoria_cnh
+      - id
+      - numero_documento
+      - pessoa
+      - uf
+      - validade
+    CargaHoraria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        carga_horaria:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+        inicio:
+          type: string
+          format: date
+        termino:
+          type: string
+          format: date
+          nullable: true
+        processo:
+          type: string
+          maxLength: 128
+        ato:
+          type: string
+          maxLength: 128
+        diario_oficial:
+          type: string
+          format: date
+          nullable: true
+        pagina_do:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        observacao:
+          type: string
+        pessoa:
+          type: integer
+      required:
+      - carga_horaria
+      - created_at
+      - id
+      - inicio
+      - pessoa
+      - updated_at
+    Cargo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 45
+        sigla:
+          type: string
+          maxLength: 6
+        carga_horaria:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+      required:
+      - carga_horaria
+      - created_at
+      - id
+      - nome
+      - sigla
+      - updated_at
+    CargoClasse:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 45
+        sigla:
+          type: string
+          maxLength: 6
+        criacao:
+          type: string
+          format: date
+        extincao:
+          type: string
+          format: date
+          nullable: true
+        cargo:
+          type: integer
+          nullable: true
+        history_user:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - criacao
+      - id
+      - nome
+      - sigla
+      - updated_at
+    CargoNivel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 45
+        sigla:
+          type: string
+          maxLength: 6
+        cod_cargo_seplag:
+          type: string
+          maxLength: 6
+        criacao:
+          type: string
+          format: date
+        extincao:
+          type: string
+          format: date
+          nullable: true
+        cargo_classe:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - criacao
+      - id
+      - nome
+      - sigla
+      - updated_at
+    CargoTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        data_admissao:
+          type: string
+          format: date
+        data_demissao:
+          type: string
+          format: date
+          nullable: true
+        tipo_cargo:
+          type: integer
+        terceirizado:
+          type: integer
+      required:
+      - created_at
+      - data_admissao
+      - id
+      - terceirizado
+      - tipo_cargo
+      - updated_at
+    CargoValorExtras:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        valor:
+          type: number
+          format: double
+        valor_especial:
+          type: number
+          format: double
+          nullable: true
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+        cargo_nivel:
+          type: integer
+      required:
+      - cargo_nivel
+      - created_at
+      - data_inicio
+      - id
+      - updated_at
+      - valor
+    CategoriaCNH:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        deleted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        categoria_cnh:
+          type: string
+          readOnly: true
+      required:
+      - categoria_cnh
+      - deleted_at
+      - id
+    CategoriaCalibreArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    CategoriaCanoArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    CategoriaTamanhoArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tamanho:
+          type: string
+          maxLength: 500
+        descricao:
+          type: string
+          nullable: true
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - tamanho
+      - updated_at
+    Circunscricao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        geo:
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Point
+              coordinates:
+                type: array
+                items:
+                  type: number
+                  format: float
+                example:
+                - 12.9721
+                - 77.5933
+                minItems: 2
+                maxItems: 3
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - LineString
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+                    format: float
+                  example:
+                  - 12.9721
+                  - 77.5933
+                  minItems: 2
+                  maxItems: 3
+                example:
+                - - 22.4707
+                  - 70.0577
+                - - 12.9721
+                  - 77.5933
+                minItems: 2
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Polygon
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+                    example:
+                    - 12.9721
+                    - 77.5933
+                    minItems: 2
+                    maxItems: 3
+                  example:
+                  - - 22.4707
+                    - 70.0577
+                  - - 12.9721
+                    - 77.5933
+                  minItems: 4
+                example:
+                - - - 0.0
+                    - 0.0
+                  - - 0.0
+                    - 50.0
+                  - - 50.0
+                    - 50.0
+                  - - 50.0
+                    - 0.0
+                  - - 0.0
+                    - 0.0
+          nullable: true
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+        unidade:
+          type: integer
+          title: Unidade policial responsável
+        municipios:
+          type: array
+          items:
+            type: integer
+        bairros:
+          type: array
+          items:
+            type: integer
+      required:
+      - created_at
+      - id
+      - tipo_de_geo
+      - unidade
+      - updated_at
+    Conjuge:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 100
+        data_nascimento:
+          type: string
+          format: date
+        cpf:
+          type: string
+          maxLength: 11
+        servidor:
+          type: boolean
+        pessoa:
+          type: integer
+        sexo:
+          type: integer
+          nullable: true
+        poder:
+          type: integer
+          nullable: true
+        esfera:
+          type: integer
+          nullable: true
+      required:
+      - cpf
+      - created_at
+      - data_nascimento
+      - id
+      - nome
+      - pessoa
+      - updated_at
+    ConjugeSwagger:
+      type: object
+      properties:
+        cpf:
+          type: string
+          maxLength: 11
+        nome:
+          type: string
+          maxLength: 100
+        data_nascimento:
+          type: string
+          format: date
+        servidor:
+          type: boolean
+        poder:
+          type: integer
+          nullable: true
+        esfera:
+          type: integer
+          nullable: true
+        sexo:
+          type: integer
+          nullable: true
+      required:
+      - cpf
+      - data_nascimento
+      - nome
+    ContatoDeEmergencia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 128
+        telefone:
+          type: string
+          maxLength: 16
+        grau_parentesco_ou_relacao:
+          type: string
+          maxLength: 128
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - grau_parentesco_ou_relacao
+      - id
+      - nome
+      - pessoa
+      - telefone
+      - updated_at
+    ContatosSwagger:
+      type: object
+      properties:
+        cep:
+          type: string
+          nullable: true
+          maxLength: 8
+        municipio:
+          type: integer
+          nullable: true
+          title: Município
+        bairro:
+          type: string
+          nullable: true
+          maxLength: 128
+        logradouro:
+          type: string
+          nullable: true
+          maxLength: 256
+        numero:
+          type: string
+          nullable: true
+          maxLength: 16
+        complemento:
+          type: string
+          nullable: true
+          maxLength: 256
+        telefone_pessoal:
+          type: string
+          nullable: true
+        telefone_funcional:
+          type: string
+          nullable: true
+        contato_de_emergencia:
+          type: string
+          nullable: true
+        rede_social:
+          type: integer
+          readOnly: true
+      required:
+      - rede_social
+    Correcao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        correcao:
+          type: string
+        frequencia:
+          type: integer
+      required:
+      - correcao
+      - created_at
+      - frequencia
+      - id
+      - updated_at
+    CorrecoesEmFolhaDeFrequencia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        correcao:
+          type: string
+          readOnly: true
+      required:
+      - correcao
+      - id
+    CotaDepartamento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data:
+          type: string
+          format: date
+        valor_cota:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        data_fechamento:
+          type: string
+          format: date-time
+          nullable: true
+        hash_fechamento:
+          type: string
+          maxLength: 64
+        unidade:
+          type: integer
+        user_id_fechamento:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - data
+      - id
+      - unidade
+      - updated_at
+      - valor_cota
+    DadosBancariosSwagger:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        tipo_banco:
+          type: integer
+        agencia:
+          type: string
+          maxLength: 10
+        conta:
+          type: string
+          maxLength: 20
+      required:
+      - agencia
+      - conta
+      - id
+      - tipo_banco
+    DadosFuncionaisSwagger:
+      type: object
+      properties:
+        matricula:
+          type: string
+          maxLength: 30
+        edital_nomeacao:
+          type: integer
+          nullable: true
+        classificacao_concurso:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          nullable: true
+        tipo_nomeacao:
+          type: integer
+          nullable: true
+        tipo_origem_vaga:
+          type: integer
+        data_nomeacao:
+          type: string
+          format: date
+          nullable: true
+        data_posse:
+          type: string
+          format: date
+        data_exercicio:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - matricula
+    DadosLotacaoSwagger:
+      type: object
+      properties:
+        lotacao:
+          $ref: '#/components/schemas/LotacaoPessoaRH'
+        funcao_em_lotacao:
+          $ref: '#/components/schemas/LotacaoFuncao'
+      required:
+      - funcao_em_lotacao
+      - lotacao
+    DadosPessoais:
+      type: object
+      properties:
+        nome:
+          type: string
+          maxLength: 100
+        nome_social:
+          type: string
+          nullable: true
+          maxLength: 100
+        cpf:
+          type: string
+          maxLength: 11
+        data_nascimento:
+          type: string
+          format: date
+        sexo:
+          type: integer
+        estado_civil:
+          type: integer
+          nullable: true
+        pai:
+          type: string
+          nullable: true
+          maxLength: 100
+        mae:
+          type: string
+          nullable: true
+          maxLength: 100
+        endereco:
+          type: integer
+          nullable: true
+        cor_raca:
+          type: integer
+          nullable: true
+          title: Raça/Cor
+        orientacao_sexual:
+          type: integer
+          nullable: true
+        identidade_de_genero:
+          type: integer
+          nullable: true
+      required:
+      - cpf
+      - data_nascimento
+      - nome
+      - sexo
+    DelegacaoEspecial:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        portaria:
+          type: string
+          maxLength: 128
+        ato:
+          type: string
+          nullable: true
+          maxLength: 128
+        descricao:
+          type: string
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - descricao
+      - id
+      - pessoa
+      - portaria
+      - updated_at
+    Delegacia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 300
+        sigla:
+          type: string
+          maxLength: 10
+        sigla_tradicional:
+          type: string
+          maxLength: 20
+        externo:
+          type: boolean
+      required:
+      - id
+      - nome
+    Dependentes:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        cpf:
+          type: string
+          nullable: true
+          maxLength: 11
+        nome:
+          type: string
+          maxLength: 100
+        data_nascimento:
+          type: string
+          format: date
+        pessoa:
+          type: integer
+        relacao_de_dependencia:
+          type: integer
+      required:
+      - created_at
+      - data_nascimento
+      - id
+      - nome
+      - pessoa
+      - relacao_de_dependencia
+      - updated_at
+    Diaria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+        execucao_antecidada:
+          type: boolean
+        objetivo:
+          type: string
+        numero:
+          type: string
+          readOnly: true
+        origem_cidade:
+          type: integer
+        destino_cidade:
+          type: integer
+        tipo_diaria:
+          type: integer
+          nullable: true
+        unidade:
+          type: integer
+        unidade_interestadual:
+          type: integer
+          nullable: true
+        operacao_diaria:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - destino_cidade
+      - id
+      - numero
+      - objetivo
+      - origem_cidade
+      - unidade
+      - updated_at
+    DistribuicaoUnidade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+        unidade:
+          type: integer
+        dependente:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - data_inicio
+      - id
+      - unidade
+      - updated_at
+    DjangoUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        password:
+          type: string
+          writeOnly: true
+          title: Senha
+          maxLength: 128
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+          title: Último login
+        is_superuser:
+          type: boolean
+          title: Status de superusuário
+          description: Indica que este usuário tem todas as permissões sem atribuí-las
+            explicitamente.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        cpf:
+          type: string
+          maxLength: 11
+        is_staff:
+          type: boolean
+      required:
+      - cpf
+      - created_at
+      - email
+      - id
+      - password
+      - updated_at
+    DocumentoIdentidadePolicial:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        outros_documento_de_identidade:
+          type: string
+          nullable: true
+          title: Descrição de outros tipos de documento
+          maxLength: 256
+        numero_documento:
+          type: string
+          title: Número do documento
+          maxLength: 64
+        expedidor:
+          type: string
+          title: Entidade/Órgão expedidor
+          maxLength: 256
+        observacao:
+          type: string
+        pessoa:
+          type: integer
+          title: Fk de pessoas
+        tipo_documento_de_identidade:
+          type: integer
+          title: Tipos de documento
+        uf:
+          type: integer
+          nullable: true
+          title: Estado Expedidor
+      required:
+      - created_at
+      - expedidor
+      - id
+      - numero_documento
+      - pessoa
+      - tipo_documento_de_identidade
+      - updated_at
+    Edital:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        numero:
+          type: string
+          maxLength: 10
+        data:
+          type: string
+          format: date
+        expiracao:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - created_at
+      - data
+      - id
+      - numero
+      - updated_at
+    Elogio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        processo:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial:
+          type: string
+          format: date
+          nullable: true
+        pagina_do:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        observacao:
+          type: string
+          nullable: true
+        tipo_elogio:
+          type: integer
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - id
+      - pessoa
+      - tipo_elogio
+      - updated_at
+    EmpresaTerceirizacao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        razao_social:
+          type: string
+          nullable: true
+          title: Razão Social
+          maxLength: 255
+        nome_fantasia:
+          type: string
+          nullable: true
+          maxLength: 255
+        cnpj:
+          type: string
+          nullable: true
+          maxLength: 14
+      required:
+      - created_at
+      - id
+      - updated_at
+    Endereco:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        data_fim_endereco:
+          type: string
+          format: date-time
+          nullable: true
+        cep:
+          type: string
+          nullable: true
+          maxLength: 8
+        logradouro:
+          type: string
+          nullable: true
+          maxLength: 256
+        numero:
+          type: string
+          nullable: true
+          maxLength: 16
+        bairro:
+          type: string
+          nullable: true
+          maxLength: 128
+        complemento:
+          type: string
+          nullable: true
+          maxLength: 256
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+        local:
+          type: integer
+          nullable: true
+        pais:
+          type: integer
+          nullable: true
+        pais_nome:
+          type: string
+          readOnly: true
+        estado:
+          type: integer
+          nullable: true
+        estado_nome:
+          type: string
+          readOnly: true
+        municipio:
+          type: integer
+          nullable: true
+          title: Município
+        municipio_nome:
+          type: string
+          readOnly: true
+        tipo_de_endereco:
+          type: integer
+          nullable: true
+        history_user:
+          type: integer
+          nullable: true
+        geo:
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Point
+              coordinates:
+                type: array
+                items:
+                  type: number
+                  format: float
+                example:
+                - 12.9721
+                - 77.5933
+                minItems: 2
+                maxItems: 3
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - LineString
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+                    format: float
+                  example:
+                  - 12.9721
+                  - 77.5933
+                  minItems: 2
+                  maxItems: 3
+                example:
+                - - 22.4707
+                  - 70.0577
+                - - 12.9721
+                  - 77.5933
+                minItems: 2
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Polygon
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+                    example:
+                    - 12.9721
+                    - 77.5933
+                    minItems: 2
+                    maxItems: 3
+                  example:
+                  - - 22.4707
+                    - 70.0577
+                  - - 12.9721
+                    - 77.5933
+                  minItems: 4
+                example:
+                - - - 0.0
+                    - 0.0
+                  - - 0.0
+                    - 50.0
+                  - - 50.0
+                    - 50.0
+                  - - 50.0
+                    - 0.0
+                  - - 0.0
+                    - 0.0
+          nullable: true
+      required:
+      - created_at
+      - estado_nome
+      - id
+      - municipio_nome
+      - pais_nome
+      - tipo_de_geo
+      - updated_at
+    EnderecoPessoaRH:
+      type: object
+      properties:
+        endereco:
+          $ref: '#/components/schemas/Endereco'
+        pessoa_rh:
+          type: integer
+      required:
+      - endereco
+      - pessoa_rh
+    EnderecoTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        logradouro:
+          type: string
+          maxLength: 255
+        numero:
+          type: string
+          maxLength: 10
+        bairro:
+          type: string
+          maxLength: 100
+        cidade:
+          type: integer
+        estado:
+          type: integer
+      required:
+      - bairro
+      - cidade
+      - estado
+      - id
+      - logradouro
+      - numero
+    EnderecoVirtual:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        rede_social:
+          type: boolean
+          title: Rede social sim/não
+        tipo_rede_social_outras:
+          type: string
+          maxLength: 128
+        url:
+          type: string
+          maxLength: 1024
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        telefone:
+          type: string
+          maxLength: 15
+        desc_local_virtual:
+          type: string
+          title: Descrição do Endereço Virtual
+        local:
+          type: integer
+          nullable: true
+        tipo_rede_social:
+          type: integer
+          nullable: true
+          title: Rede Social
+      required:
+      - desc_local_virtual
+      - id
+    EquipamentoBelico:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        item:
+          type: string
+          maxLength: 500
+        tipo_equipamento_belico:
+          type: integer
+      required:
+      - created_at
+      - id
+      - item
+      - tipo_equipamento_belico
+      - updated_at
+    Escolaridades:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        descricao:
+          type: string
+      required:
+      - created_at
+      - descricao
+      - id
+      - updated_at
+    Esfera:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 32
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    Estado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        nome:
+          type: string
+          readOnly: true
+        sigla:
+          type: string
+          readOnly: true
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+        pais:
+          type: integer
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - is_active
+      - nome
+      - pais
+      - sigla
+      - tipo_de_geo
+      - updated_at
+    EstadoCivil:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 32
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    EstadoConservacaoArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    ExtrasPessoaRH:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_hora_inicio:
+          type: string
+          format: date-time
+        horas:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        pessoa:
+          type: integer
+        operacao:
+          type: integer
+          nullable: true
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - data_hora_inicio
+      - horas
+      - id
+      - pessoa
+      - unidade
+      - updated_at
+    ExtrasTramitacao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        periodo:
+          type: string
+          format: date
+        edoweb:
+          type: string
+          maxLength: 10
+        edoweb_hash:
+          type: string
+          maxLength: 64
+        data_edoweb:
+          type: string
+          format: date-time
+          nullable: true
+        portaria:
+          type: string
+          maxLength: 14
+        portaria_hash:
+          type: string
+          maxLength: 64
+        data_portaria:
+          type: string
+          format: date-time
+          nullable: true
+        despesa_hash:
+          type: string
+          maxLength: 64
+        data_despesa:
+          type: string
+          format: date-time
+          nullable: true
+        user_id_edoweb:
+          type: integer
+          nullable: true
+        user_id_portaria:
+          type: integer
+          nullable: true
+        user_id_despesa:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - id
+      - periodo
+      - updated_at
+    Fardamento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        quantidade:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        observacao:
+          type: string
+          maxLength: 300
+        tipo_fardamento:
+          type: integer
+        tamanho:
+          type: integer
+          nullable: true
+        numeracao_tamanho:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - id
+      - observacao
+      - tipo_fardamento
+      - updated_at
+    Ferias:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pessoa:
+          type: integer
+        tipo_ferias:
+          type: integer
+        periodo_aquisitivo_inicio:
+          type: string
+          format: date
+        periodo_aquisitivo_fim:
+          type: string
+          format: date
+        observacao:
+          type: string
+          nullable: true
+        periodo_ferias_related:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeriodoFerias'
+      required:
+      - id
+      - periodo_aquisitivo_fim
+      - periodo_aquisitivo_inicio
+      - periodo_ferias_related
+      - pessoa
+      - tipo_ferias
+    FichaFuncional:
+      type: object
+      properties:
+        dados_pessoais:
+          $ref: '#/components/schemas/DadosPessoais'
+        matriculas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Matricula'
+        alteracao_de_carga_horaria:
+          type: array
+          items:
+            $ref: '#/components/schemas/CargaHoraria'
+        cargo:
+          $ref: '#/components/schemas/CargoNivel'
+        licencas_e_afastamentos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Afastamento'
+        licencas_especiais:
+          type: array
+          items:
+            $ref: '#/components/schemas/Afastamento'
+        lotacoes_e_funcoes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LotacaoFuncao'
+        ferias:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ferias'
+        elogios:
+          type: array
+          items:
+            $ref: '#/components/schemas/Elogio'
+        processos_administrativos:
+          type: array
+          items: {}
+        averbacao_e_desaverbacao:
+          type: array
+          items: {}
+      required:
+      - alteracao_de_carga_horaria
+      - averbacao_e_desaverbacao
+      - cargo
+      - dados_pessoais
+      - elogios
+      - ferias
+      - licencas_e_afastamentos
+      - licencas_especiais
+      - lotacoes_e_funcoes
+      - matriculas
+      - processos_administrativos
+    FilesystemChunkSwagger:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+        total_chunk:
+          type: integer
+          minimum: 1
+        current_chunk:
+          type: integer
+          minimum: 1
+        body_payload:
+          type: string
+      required:
+      - body_payload
+      - current_chunk
+      - name
+      - size
+      - total_chunk
+    FolhaDeFrequencia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        ano_referencia:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        assinatura_fechamento:
+          type: string
+          format: date-time
+          nullable: true
+        assinatura_hash:
+          type: string
+          maxLength: 64
+        validada:
+          type: boolean
+        unidade:
+          type: integer
+        mes_referencia:
+          type: integer
+        assinatura_delegado:
+          type: integer
+          nullable: true
+        situacao:
+          type: integer
+      required:
+      - ano_referencia
+      - created_at
+      - id
+      - mes_referencia
+      - unidade
+      - updated_at
+    FolhaDeFrequenciaAnexoSwagger:
+      type: object
+      properties:
+        ano:
+          type: integer
+        mes:
+          type: integer
+        fileservice_chunk:
+          $ref: '#/components/schemas/FilesystemChunkSwagger'
+      required:
+      - ano
+      - fileservice_chunk
+      - mes
+    FolhaDeFrequenciaDelegadoGetSwagger:
+      type: object
+      properties:
+        titularidade:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolhaDeFrequenciaGet'
+        respondencia:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolhaDeFrequenciaGet'
+      required:
+      - respondencia
+      - titularidade
+    FolhaDeFrequenciaDelegadoUpdateSwagger:
+      type: object
+      properties:
+        titularidade:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolhaDeFrequenciaUpdateSwagger'
+        respondencia:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolhaDeFrequenciaUpdateSwagger'
+      required:
+      - respondencia
+      - titularidade
+    FolhaDeFrequenciaGet:
+      type: object
+      properties:
+        enviar_para_rh:
+          type: boolean
+          writeOnly: true
+        id:
+          type: integer
+        ano:
+          type: integer
+        mes:
+          type: string
+          maxLength: 50
+        mes_id:
+          type: integer
+        unidade_id:
+          type: integer
+        unidade_nome:
+          type: string
+          maxLength: 100
+        unidade_sigla:
+          type: string
+          maxLength: 10
+        situacao:
+          type: string
+          maxLength: 64
+        anexos:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          readOnly: true
+        correcoes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CorrecoesEmFolhaDeFrequencia'
+          readOnly: true
+        pessoas:
+          type: array
+          items:
+            $ref: '#/components/schemas/PessoaRHEmFolhaDeFrequenciaSwagger'
+      required:
+      - anexos
+      - ano
+      - correcoes
+      - enviar_para_rh
+      - id
+      - mes
+      - mes_id
+      - pessoas
+      - situacao
+      - unidade_id
+      - unidade_nome
+      - unidade_sigla
+    FolhaDeFrequenciaUpdateSwagger:
+      type: object
+      properties:
+        id:
+          type: integer
+        enviar_para_rh:
+          type: boolean
+          writeOnly: true
+        unidade:
+          type: string
+          maxLength: 100
+        pessoas:
+          type: array
+          items:
+            $ref: '#/components/schemas/PessoaRHEmFolhaDeFrequenciaSwagger'
+        error:
+          type: boolean
+          readOnly: true
+        error_detail:
+          type: string
+          readOnly: true
+      required:
+      - enviar_para_rh
+      - error
+      - error_detail
+      - id
+      - pessoas
+      - unidade
+    FotosPessoa:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        fileservice_chunk:
+          allOf:
+          - $ref: '#/components/schemas/FilesystemChunkSwagger'
+          writeOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        fileservice_key:
+          type: string
+          maxLength: 64
+        principal:
+          type: string
+          format: date-time
+          nullable: true
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - id
+      - pessoa
+      - updated_at
+    FotosTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        fileservice_key:
+          type: string
+          maxLength: 64
+        principal:
+          type: string
+          format: date-time
+          nullable: true
+        terceirizado:
+          type: integer
+      required:
+      - created_at
+      - id
+      - terceirizado
+      - updated_at
+    FuncaoDelegacia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        funcao:
+          type: string
+          maxLength: 60
+        data_criacao:
+          type: string
+          format: date
+        data_extincao:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - created_at
+      - data_criacao
+      - funcao
+      - id
+      - updated_at
+    GeoPoint:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+      required:
+      - lat
+      - lon
+    Gratificacao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        simbolo:
+          type: string
+          maxLength: 10
+        valor:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - created_at
+      - data_inicio
+      - id
+      - simbolo
+      - updated_at
+      - valor
+    GrupoSanguineo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        descricao:
+          type: string
+          maxLength: 3
+      required:
+      - created_at
+      - descricao
+      - id
+      - updated_at
+    HistAcademico:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        fileservice_chunk:
+          allOf:
+          - $ref: '#/components/schemas/FilesystemChunkSwagger'
+          writeOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome_curso:
+          type: string
+          maxLength: 128
+        instituicao:
+          type: string
+          maxLength: 256
+        conclusao:
+          type: string
+          format: date
+        carga_horaria:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,1})?$
+          nullable: true
+        data_protocolo:
+          type: string
+          format: date
+        qualificacao:
+          type: integer
+        pessoa:
+          type: integer
+        atribuicao_no_curso:
+          type: integer
+      required:
+      - conclusao
+      - created_at
+      - data_protocolo
+      - id
+      - instituicao
+      - nome_curso
+      - pessoa
+      - qualificacao
+      - updated_at
+    HistCargo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        processo:
+          type: string
+          nullable: true
+          maxLength: 128
+        portaria:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial:
+          type: string
+          format: date
+          nullable: true
+        pagina_do:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        a_partir_de:
+          type: string
+          format: date
+        observacao:
+          type: string
+          nullable: true
+        cargo_nivel:
+          type: integer
+        pessoa:
+          type: integer
+        matricula:
+          type: integer
+          nullable: true
+        tipo_promocao:
+          type: integer
+          nullable: true
+      required:
+      - a_partir_de
+      - cargo_nivel
+      - created_at
+      - id
+      - pessoa
+      - updated_at
+    IdentidadeDeGenero:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        identidade_de_genero:
+          type: string
+          readOnly: true
+          title: Identidade de gênero
+      required:
+      - id
+      - identidade_de_genero
+    IdentificacaoSwagger:
+      type: object
+      properties:
+        cpf:
+          type: string
+          maxLength: 11
+        nome:
+          type: string
+          maxLength: 100
+        nome_social:
+          type: string
+          nullable: true
+          maxLength: 100
+        mae:
+          type: string
+          nullable: true
+          maxLength: 100
+        pai:
+          type: string
+          nullable: true
+          maxLength: 100
+        nascimento_cidade:
+          type: integer
+          nullable: true
+        sexo:
+          type: integer
+        data_nascimento:
+          type: string
+          format: date
+        estado_civil:
+          type: integer
+          nullable: true
+        grupo_sanguineo:
+          type: integer
+          nullable: true
+        cor_raca:
+          type: integer
+          nullable: true
+          title: Raça/Cor
+        nacionalidade:
+          type: integer
+        email_funcional:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 254
+        email_pessoal:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 254
+      required:
+      - cpf
+      - data_nascimento
+      - nome
+      - sexo
+    Ids:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+      required:
+      - ids
+    Informes:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        quantidade_visita:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        titulo:
+          type: string
+          maxLength: 180
+        tags:
+          type: string
+          maxLength: 180
+        texto:
+          type: string
+        slug:
+          type: string
+          maxLength: 250
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - id
+      - quantidade_visita
+      - slug
+      - tags
+      - texto
+      - titulo
+      - unidade
+      - updated_at
+    ItemAlgema:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+      required:
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - modelo
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    ItemArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        capacidade:
+          type: string
+          nullable: true
+          maxLength: 500
+        numero_de_serie:
+          type: string
+          maxLength: 500
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+        acabamento:
+          type: integer
+        calibre:
+          type: integer
+        cano:
+          type: integer
+      required:
+      - acabamento
+      - calibre
+      - cano
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - modelo
+      - numero_de_serie
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    ItemBaseArmas:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+      required:
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - modelo
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    ItemCarregadorArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        capacidade:
+          type: string
+          nullable: true
+          maxLength: 500
+        numero_de_serie:
+          type: string
+          maxLength: 500
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+        acabamento:
+          type: integer
+        calibre:
+          type: integer
+      required:
+      - acabamento
+      - calibre
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - modelo
+      - numero_de_serie
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    ItemColete:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        dt_fabricacao:
+          type: string
+          format: date
+          nullable: true
+        dt_vencimento:
+          type: string
+          format: date
+          nullable: true
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+        sexo:
+          type: integer
+          nullable: true
+        uso:
+          type: integer
+          nullable: true
+        nivel_colete:
+          type: integer
+          nullable: true
+        tamanho:
+          type: integer
+          nullable: true
+      required:
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - modelo
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    ItemGenericoArmas:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        capacidade:
+          type: string
+          nullable: true
+          maxLength: 500
+        numero_de_serie:
+          type: string
+          maxLength: 500
+        quantidade:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+        acabamento:
+          type: integer
+        calibre:
+          type: integer
+        cano:
+          type: integer
+      required:
+      - acabamento
+      - calibre
+      - cano
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - modelo
+      - numero_de_serie
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    ItemHT:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+      required:
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - modelo
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    ItemMunicao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_aquisicao:
+          type: string
+          format: date
+        tombo:
+          type: string
+          maxLength: 500
+        observacao:
+          type: string
+          maxLength: 300
+        quantidade:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        lote:
+          type: string
+        status:
+          type: integer
+        modelo:
+          type: integer
+        orgao:
+          type: integer
+        origem:
+          type: integer
+          nullable: true
+        conservacao:
+          type: integer
+        calibre:
+          type: integer
+      required:
+      - calibre
+      - conservacao
+      - created_at
+      - data_aquisicao
+      - id
+      - lote
+      - modelo
+      - observacao
+      - orgao
+      - status
+      - tombo
+      - updated_at
+    KeycloakTokenRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        otp:
+          type: string
+      required:
+      - email
+      - password
+    KeycloakTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        refresh_expires_in:
+          type: integer
+        token_type:
+          type: string
+        not_before_policy:
+          type: integer
+        session_state:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - expires_in
+      - not_before_policy
+      - refresh_expires_in
+      - refresh_token
+      - scope
+      - session_state
+      - token_type
+    KeycloakUpdatePasswordRequest:
+      type: object
+      properties:
+        old_password:
+          type: string
+        new_password:
+          type: string
+        otp:
+          type: string
+      required:
+      - new_password
+      - old_password
+    KeycloakVerifyTokenRequest:
+      type: object
+      properties:
+        token:
+          type: string
+      required:
+      - token
+    Local:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        endereco_related:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endereco'
+          readOnly: true
+        endereco_virtual_related:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnderecoVirtual'
+          readOnly: true
+        descricao:
+          type: string
+          title: Descrição do local
+        tipo_de_local:
+          type: integer
+          title: Classificação do local
+      required:
+      - endereco_related
+      - endereco_virtual_related
+      - id
+    LogExtras:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tabela:
+          type: string
+          maxLength: 80
+        operacao:
+          type: string
+          maxLength: 20
+        descricao:
+          type: string
+        user:
+          type: integer
+      required:
+      - created_at
+      - descricao
+      - id
+      - operacao
+      - tabela
+      - updated_at
+      - user
+    LotacaoFuncao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        a_partir_de_inicio:
+          type: string
+          format: date
+          nullable: true
+        a_partir_de_fim:
+          type: string
+          format: date
+          nullable: true
+        notificacao_ini:
+          type: string
+          format: date
+          nullable: true
+        notificacao_fim:
+          type: string
+          format: date
+          nullable: true
+        exercicio_ini:
+          type: string
+          format: date
+          nullable: true
+        processo_ini:
+          type: string
+          nullable: true
+          maxLength: 128
+        processo_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato_ini:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial_ini:
+          type: string
+          format: date
+          nullable: true
+        diario_oficial_fim:
+          type: string
+          format: date
+          nullable: true
+        pagina_do_ini:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        pagina_do_fim:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        lotacao:
+          type: integer
+        funcao:
+          type: integer
+        gratificacao:
+          type: integer
+          nullable: true
+        tipo_lotacao_funcao:
+          type: integer
+      required:
+      - created_at
+      - funcao
+      - id
+      - lotacao
+      - updated_at
+    LotacaoItemArmas:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_entrega:
+          type: string
+          format: date
+          nullable: true
+        data_devolucao:
+          type: string
+          format: date
+          nullable: true
+        observacao:
+          type: string
+          maxLength: 300
+        pessoa:
+          type: integer
+        unidade:
+          type: integer
+        item:
+          type: integer
+      required:
+      - created_at
+      - id
+      - item
+      - observacao
+      - pessoa
+      - unidade
+      - updated_at
+    LotacaoPessoaRH:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        a_partir_de_inicio:
+          type: string
+          format: date
+          nullable: true
+        a_partir_de_fim:
+          type: string
+          format: date
+          nullable: true
+        notificacao_ini:
+          type: string
+          format: date
+          nullable: true
+        notificacao_fim:
+          type: string
+          format: date
+          nullable: true
+        exercicio_ini:
+          type: string
+          format: date
+          nullable: true
+        observacao:
+          type: string
+          nullable: true
+        processo_ini:
+          type: string
+          nullable: true
+          maxLength: 128
+        processo_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato_ini:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial_ini:
+          type: string
+          format: date
+          nullable: true
+        diario_oficial_fim:
+          type: string
+          format: date
+          nullable: true
+        pagina_do_ini:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        pagina_do_fim:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        pessoa:
+          type: integer
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - id
+      - pessoa
+      - unidade
+      - updated_at
+    LotacaoRequerFuncoes:
+      type: object
+      properties:
+        lotacao_pessoa:
+          $ref: '#/components/schemas/LotacaoPessoaRH'
+        funcoes_em_lotacao:
+          type: array
+          items:
+            $ref: '#/components/schemas/LotacaoFuncao'
+      required:
+      - funcoes_em_lotacao
+      - lotacao_pessoa
+    LotacaoTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+        terceirizado:
+          type: integer
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - data_inicio
+      - id
+      - terceirizado
+      - unidade
+      - updated_at
+    MarcaArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        razao_social:
+          type: string
+          maxLength: 500
+        nome_fantasia:
+          type: string
+          maxLength: 500
+        cnpj:
+          type: string
+          nullable: true
+          maxLength: 14
+      required:
+      - created_at
+      - id
+      - nome_fantasia
+      - razao_social
+      - updated_at
+    Matricula:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        cargo_nivel:
+          type: integer
+          writeOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        matricula:
+          type: string
+          maxLength: 30
+        classificacao_concurso:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          nullable: true
+        processo_nomeacao:
+          type: string
+          nullable: true
+          maxLength: 128
+        do_nomeacao:
+          type: string
+          maxLength: 128
+        do_data_nomeacao:
+          type: string
+          format: date
+          nullable: true
+        do_pagina_nomeacao:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        posse:
+          type: string
+          format: date
+        exercicio:
+          type: string
+          format: date
+          nullable: true
+        processo_exoneracao:
+          type: string
+          maxLength: 128
+        do_exoneracao:
+          type: string
+          maxLength: 128
+        do_data_exoneracao:
+          type: string
+          format: date
+          nullable: true
+        do_pagina_exoneracao:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        exoneracao:
+          type: string
+          format: date
+          nullable: true
+        tipo_vinculo:
+          type: integer
+          nullable: true
+        tipo_nomeacao:
+          type: integer
+          nullable: true
+        edital_nomeacao:
+          type: integer
+          nullable: true
+        tipo_origem_vaga:
+          type: integer
+        pessoa:
+          type: integer
+        cargo_nivel_inicial:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - id
+      - matricula
+      - pessoa
+      - posse
+      - updated_at
+    MatriculaTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        matricula:
+          type: string
+          description: Número de matrícula do terceirizado dentro da empresa
+          maxLength: 20
+        empresa:
+          type: integer
+        cargo:
+          type: integer
+      required:
+      - cargo
+      - created_at
+      - empresa
+      - id
+      - matricula
+      - updated_at
+    MedidaProcessual:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        inicio:
+          type: string
+          format: date
+          nullable: true
+        fim:
+          type: string
+          format: date
+          nullable: true
+        ato_inicio:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial_inicio:
+          type: string
+          format: date
+          nullable: true
+        do_pagina_inicio:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        ato_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial_fim:
+          type: string
+          format: date
+          nullable: true
+        do_pagina_fim:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        boletim_interno:
+          type: string
+          maxLength: 100
+        portaria:
+          type: string
+          maxLength: 10
+        observacao:
+          type: string
+        processo:
+          type: integer
+        tipo_penalidade:
+          type: integer
+      required:
+      - created_at
+      - id
+      - processo
+      - tipo_penalidade
+      - updated_at
+    MeusPedidosTramitacaoSimplified:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        situacao:
+          $ref: '#/components/schemas/SituacaoTramitacaoDiaria'
+        numero:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - id
+      - numero
+      - situacao
+      - unidade
+    ModeloArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        modelo:
+          type: string
+          maxLength: 500
+        marca:
+          type: integer
+        equipamento_belico:
+          type: integer
+      required:
+      - created_at
+      - equipamento_belico
+      - id
+      - marca
+      - modelo
+      - updated_at
+    Municipio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        nome:
+          type: string
+          readOnly: true
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+        estado:
+          type: integer
+          readOnly: true
+        regiao_planejamento:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - estado
+      - id
+      - is_active
+      - nome
+      - regiao_planejamento
+      - tipo_de_geo
+      - updated_at
+    MunicipioCustom:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        nome:
+          type: string
+          readOnly: true
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+        estado:
+          type: integer
+          readOnly: true
+        regiao_planejamento:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - estado
+      - id
+      - is_active
+      - nome
+      - regiao_planejamento
+      - tipo_de_geo
+      - updated_at
+    MunicipioRetrive:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        geo:
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Point
+              coordinates:
+                type: array
+                items:
+                  type: number
+                  format: float
+                example:
+                - 12.9721
+                - 77.5933
+                minItems: 2
+                maxItems: 3
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - LineString
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+                    format: float
+                  example:
+                  - 12.9721
+                  - 77.5933
+                  minItems: 2
+                  maxItems: 3
+                example:
+                - - 22.4707
+                  - 70.0577
+                - - 12.9721
+                  - 77.5933
+                minItems: 2
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Polygon
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+                    example:
+                    - 12.9721
+                    - 77.5933
+                    minItems: 2
+                    maxItems: 3
+                  example:
+                  - - 22.4707
+                    - 70.0577
+                  - - 12.9721
+                    - 77.5933
+                  minItems: 4
+                example:
+                - - - 0.0
+                    - 0.0
+                  - - 0.0
+                    - 50.0
+                  - - 50.0
+                    - 50.0
+                  - - 50.0
+                    - 0.0
+                  - - 0.0
+                    - 0.0
+          readOnly: true
+          nullable: true
+        nome:
+          type: string
+          readOnly: true
+        tipo_de_geo:
+          type: integer
+          readOnly: true
+          nullable: true
+        estado:
+          type: integer
+          readOnly: true
+        regiao_planejamento:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - estado
+      - geo
+      - id
+      - is_active
+      - nome
+      - regiao_planejamento
+      - tipo_de_geo
+      - updated_at
+    NewCargoTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        data_admissao:
+          type: string
+          format: date
+        data_demissao:
+          type: string
+          format: date
+          nullable: true
+        tipo_cargo:
+          type: integer
+      required:
+      - created_at
+      - data_admissao
+      - id
+      - tipo_cargo
+      - updated_at
+    NewLotacaoTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - data_inicio
+      - id
+      - unidade
+      - updated_at
+    NewMatriculaTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        matricula:
+          type: string
+          description: Número de matrícula do terceirizado dentro da empresa
+          maxLength: 20
+        empresa:
+          type: integer
+      required:
+      - created_at
+      - empresa
+      - id
+      - matricula
+      - updated_at
+    NewPessoaTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        nome:
+          type: string
+          maxLength: 100
+        nome_social:
+          type: string
+          nullable: true
+          maxLength: 100
+        cpf:
+          type: string
+          maxLength: 11
+        rg:
+          type: string
+          nullable: true
+          maxLength: 12
+        data_nascimento:
+          type: string
+          format: date
+          nullable: true
+        email:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 255
+        telefone:
+          type: string
+          nullable: true
+          maxLength: 12
+        contato_de_emergencia:
+          type: string
+          nullable: true
+          maxLength: 12
+        sexo:
+          type: integer
+          nullable: true
+      required:
+      - cpf
+      - created_at
+      - id
+      - nome
+      - updated_at
+    NivelColete:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+        descricao:
+          type: string
+          nullable: true
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    Nomes:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 128
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - id
+      - nome
+      - pessoa
+      - updated_at
+    OperacaoPolicialDiaria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 150
+        inicio:
+          type: string
+          format: date
+        fim:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - created_at
+      - id
+      - inicio
+      - nome
+      - updated_at
+    OperacaoPolicialExtras:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome_operacao:
+          type: string
+          maxLength: 150
+        inicio:
+          type: string
+          format: date
+        fim:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - created_at
+      - id
+      - inicio
+      - nome_operacao
+      - updated_at
+    OrgaoSegurancaPublica:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    OrientacaoSexual:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        orientacao_sexual:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - orientacao_sexual
+    OrigemArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+      
+      PerfilSistema:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+        nome:
+          type: string
+          maxLength: 45
+        sistema:
+          type: integer
+      required:
+      - created_at
+      - id
+      - nome
+      - sistema
+      - updated_at
+    PerfilSistemaUsuarioDePessoa:
+      type: object
+      properties:
+        pessoa:
+          type: integer
+        perfis:
+          type: array
+          items:
+            type: integer
+      required:
+      - perfis
+      - pessoa
+    PerfilUsuarioEpol:
+      type: object
+      properties:
+        pessoa:
+          type: integer
+          writeOnly: true
+        perfil:
+          type: integer
+          writeOnly: true
+      required:
+      - perfil
+      - pessoa
+    PerfilUsuarioRhCentral:
+      type: object
+      properties:
+        pessoa:
+          type: integer
+          writeOnly: true
+        perfil:
+          type: integer
+          writeOnly: true
+      required:
+      - perfil
+      - pessoa
+    PeriodoFerias:
+      type: object
+      properties:
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - data_inicio
+    PessoaAtencaoSaude:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        deficiencia_fisica:
+          type: boolean
+        deficiencia_visual:
+          type: boolean
+        deficiencia_auditiva:
+          type: boolean
+        deficiencia_mental:
+          type: boolean
+        deficiencia_intelectual:
+          type: boolean
+        reabilitado_readaptado:
+          type: boolean
+        observacao:
+          type: string
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - id
+      - pessoa
+      - updated_at
+    PessoaRH:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        cargo_nivel_vigente_nome:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 100
+        nome_social:
+          type: string
+          nullable: true
+          maxLength: 100
+        pai:
+          type: string
+          nullable: true
+          maxLength: 100
+        mae:
+          type: string
+          nullable: true
+          maxLength: 100
+        cpf:
+          type: string
+          maxLength: 11
+        pis_pasep:
+          type: string
+          maxLength: 11
+        data_nascimento:
+          type: string
+          format: date
+        email_funcional:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 254
+        email_pessoal:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 254
+        estado_civil:
+          type: integer
+          nullable: true
+        sexo:
+          type: integer
+        cor_raca:
+          type: integer
+          nullable: true
+          title: Raça/Cor
+        orientacao_sexual:
+          type: integer
+          nullable: true
+        identidade_de_genero:
+          type: integer
+          nullable: true
+        grupo_sanguineo:
+          type: integer
+          nullable: true
+        nascimento_cidade:
+          type: integer
+          nullable: true
+        endereco:
+          type: integer
+          nullable: true
+        status:
+          type: integer
+          nullable: true
+        unidade_lotacao_vigente:
+          type: integer
+          readOnly: true
+          nullable: true
+        cargo_nivel_vigente:
+          type: integer
+          readOnly: true
+          nullable: true
+        history_user:
+          type: integer
+          nullable: true
+      required:
+      - cargo_nivel_vigente
+      - cargo_nivel_vigente_nome
+      - cpf
+      - created_at
+      - data_nascimento
+      - id
+      - nome
+      - sexo
+      - unidade_lotacao_vigente
+      - updated_at
+    PessoaRHEmFolhaDeFrequenciaSwagger:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          readOnly: true
+        matricula:
+          type: string
+          maxLength: 30
+        cargo:
+          type: string
+          readOnly: true
+          maxLength: 30
+        faltas:
+          type: integer
+          maximum: 31
+          minimum: 1
+        presencas:
+          type: integer
+          maximum: 31
+          minimum: 1
+        presencas_dia_util:
+          type: integer
+          maximum: 31
+          minimum: 1
+        faltas_permanencia:
+          type: integer
+          maximum: 31
+          minimum: 1
+        presencas_permanencia:
+          type: integer
+          maximum: 31
+          minimum: 1
+        permanencia_trabalhados:
+          type: integer
+          maximum: 31
+          minimum: 1
+        justificativas:
+          type: string
+      required:
+      - cargo
+      - faltas
+      - faltas_permanencia
+      - id
+      - justificativas
+      - matricula
+      - nome
+      - permanencia_trabalhados
+      - presencas
+      - presencas_dia_util
+      - presencas_permanencia
+    PessoaRHNacionalidades:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        pessoa:
+          type: integer
+        nacionalidade:
+          type: integer
+      required:
+      - created_at
+      - id
+      - nacionalidade
+      - pessoa
+      - updated_at
+    PessoaRedeSocial:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tipo_rede_social_outras:
+          type: string
+          maxLength: 128
+        identificador:
+          type: string
+          maxLength: 128
+        url_perfil:
+          type: string
+          format: uri
+          maxLength: 256
+        pessoa:
+          type: integer
+        tipo_rede_social:
+          type: integer
+          title: Rede Social
+      required:
+      - created_at
+      - id
+      - pessoa
+      - updated_at
+    PessoaTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        nome:
+          type: string
+          maxLength: 100
+        nome_social:
+          type: string
+          nullable: true
+          maxLength: 100
+        cpf:
+          type: string
+          maxLength: 11
+        rg:
+          type: string
+          nullable: true
+          maxLength: 12
+        data_nascimento:
+          type: string
+          format: date
+          nullable: true
+        email:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 255
+        telefone:
+          type: string
+          nullable: true
+          maxLength: 12
+        contato_de_emergencia:
+          type: string
+          nullable: true
+          maxLength: 12
+        sexo:
+          type: integer
+          nullable: true
+        endereco:
+          type: integer
+          nullable: true
+      required:
+      - cpf
+      - created_at
+      - id
+      - nome
+      - updated_at
+    Poder:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 32
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    PolicialCompletoList:
+      type: object
+      properties:
+        id_policial:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+        matricula:
+          type: string
+        cargo:
+          type: string
+        lotacao:
+          type: string
+        status:
+          type: string
+      required:
+      - cargo
+      - id_policial
+      - lotacao
+      - matricula
+      - nome
+      - status
+    PolicialCompletoPostSwagger:
+      type: object
+      properties:
+        identificacao:
+          $ref: '#/components/schemas/IdentificacaoSwagger'
+        contatos:
+          $ref: '#/components/schemas/ContatosSwagger'
+        conjuge:
+          $ref: '#/components/schemas/ConjugeSwagger'
+        dados_funcionais:
+          $ref: '#/components/schemas/DadosFuncionaisSwagger'
+        dados_bancarios:
+          $ref: '#/components/schemas/DadosBancariosSwagger'
+      required:
+      - identificacao
+    PolicialCompletoRetrieve:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pessoa:
+          $ref: '#/components/schemas/IdentificacaoSwagger'
+        endereco:
+          $ref: '#/components/schemas/ContatosSwagger'
+        conjuge:
+          $ref: '#/components/schemas/ConjugeSwagger'
+        dados_funcionais:
+          $ref: '#/components/schemas/DadosFuncionaisSwagger'
+        dados_bancarios:
+          $ref: '#/components/schemas/DadosBancariosSwagger'
+        dados_lotacao:
+          $ref: '#/components/schemas/DadosLotacaoSwagger'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 100
+        nome_social:
+          type: string
+          nullable: true
+          maxLength: 100
+        pai:
+          type: string
+          nullable: true
+          maxLength: 100
+        mae:
+          type: string
+          nullable: true
+          maxLength: 100
+        cpf:
+          type: string
+          maxLength: 11
+        pis_pasep:
+          type: string
+          maxLength: 11
+        data_nascimento:
+          type: string
+          format: date
+        email_funcional:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 254
+        email_pessoal:
+          type: string
+          format: email
+          nullable: true
+          maxLength: 254
+        estado_civil:
+          type: integer
+          nullable: true
+        sexo:
+          type: integer
+        cor_raca:
+          type: integer
+          nullable: true
+          title: Raça/Cor
+        orientacao_sexual:
+          type: integer
+          nullable: true
+        identidade_de_genero:
+          type: integer
+          nullable: true
+        grupo_sanguineo:
+          type: integer
+          nullable: true
+        nascimento_cidade:
+          type: integer
+          nullable: true
+        status:
+          type: integer
+          nullable: true
+        unidade_lotacao_vigente:
+          type: integer
+          readOnly: true
+          nullable: true
+        cargo_nivel_vigente:
+          type: integer
+          nullable: true
+        history_user:
+          type: integer
+          nullable: true
+      required:
+      - cpf
+      - created_at
+      - data_nascimento
+      - endereco
+      - id
+      - nome
+      - pessoa
+      - sexo
+      - unidade_lotacao_vigente
+      - updated_at
+    PolicialLotacao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        a_partir_de_inicio:
+          type: string
+          format: date
+          nullable: true
+        a_partir_de_fim:
+          type: string
+          format: date
+          nullable: true
+        notificacao_ini:
+          type: string
+          format: date
+          nullable: true
+        notificacao_fim:
+          type: string
+          format: date
+          nullable: true
+        exercicio_ini:
+          type: string
+          format: date
+          nullable: true
+        observacao:
+          type: string
+          nullable: true
+        processo_ini:
+          type: string
+          nullable: true
+          maxLength: 128
+        processo_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato_ini:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial_ini:
+          type: string
+          format: date
+          nullable: true
+        diario_oficial_fim:
+          type: string
+          format: date
+          nullable: true
+        pagina_do_ini:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        pagina_do_fim:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        pessoa:
+          type: integer
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - id
+      - pessoa
+      - unidade
+      - updated_at
+    Processo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        portaria:
+          type: string
+          nullable: true
+          maxLength: 32
+        inicio:
+          type: string
+          format: date
+          nullable: true
+        fim:
+          type: string
+          format: date
+          nullable: true
+        processo:
+          type: string
+          nullable: true
+          maxLength: 128
+        ato_inicio:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial_inicio:
+          type: string
+          format: date
+          nullable: true
+        do_pagina_inicio:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        ato_fim:
+          type: string
+          nullable: true
+          maxLength: 128
+        diario_oficial_fim:
+          type: string
+          format: date
+          nullable: true
+        do_pagina_fim:
+          type: integer
+          maximum: 32767
+          minimum: -32768
+          nullable: true
+        observacao:
+          type: string
+          nullable: true
+        tipo_processo:
+          type: integer
+        situacao_processo:
+          type: integer
+          nullable: true
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - id
+      - pessoa
+      - tipo_processo
+      - updated_at
+    ReaberturaFrequencia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_horario:
+          type: string
+          format: date-time
+        frequencia:
+          type: integer
+      required:
+      - created_at
+      - data_horario
+      - frequencia
+      - id
+      - updated_at
+    RedeSocial:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - nome
+    RegiaoPlanejamento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        nome:
+          type: string
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - is_active
+      - nome
+      - updated_at
+    SendEmailReset:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    SetPasswordRetype:
+      type: object
+      properties:
+        new_password:
+          type: string
+        re_new_password:
+          type: string
+        current_password:
+          type: string
+      required:
+      - current_password
+      - new_password
+      - re_new_password
+    SetUsername:
+      type: object
+      properties:
+        current_password:
+          type: string
+        new_email:
+          type: string
+          format: email
+          title: Email
+          maxLength: 254
+      required:
+      - current_password
+      - new_email
+    Sexo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        sexo:
+          type: string
+          maxLength: 9
+      required:
+      - created_at
+      - id
+      - sexo
+      - updated_at
+    Sistema:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 60
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    SituacaoProcesso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        descricao:
+          type: string
+          readOnly: true
+      required:
+      - descricao
+      - id
+    SituacaoTramitacaoDiaria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        is_active:
+          type: boolean
+          title: Ativo?
+        descricao:
+          type: string
+          maxLength: 45
+      required:
+      - descricao
+      - id
+    Status:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        descricao:
+          type: string
+          maxLength: 45
+      required:
+      - created_at
+      - descricao
+      - id
+      - updated_at
+    StatusArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    Telefones:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        telefone:
+          type: string
+          maxLength: 30
+        pessoa:
+          type: integer
+        tipo:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - id
+      - pessoa
+      - telefone
+      - updated_at
+    TempoServico:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+      required:
+      - created_at
+      - id
+      - updated_at
+    TerceirizadoCompleto:
+      type: object
+      properties:
+        terceirizado:
+          $ref: '#/components/schemas/NewPessoaTerceirizado'
+        matricula:
+          $ref: '#/components/schemas/NewMatriculaTerceirizado'
+        cargo:
+          $ref: '#/components/schemas/NewCargoTerceirizado'
+        lotacao:
+          $ref: '#/components/schemas/NewLotacaoTerceirizado'
+        endereco:
+          $ref: '#/components/schemas/EnderecoTerceirizado'
+      required:
+      - cargo
+      - lotacao
+      - matricula
+      - terceirizado
+    TipoAcabamentoArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+        descricao:
+          type: string
+          nullable: true
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    TipoAfastamento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tipo_afastamento:
+          type: string
+          maxLength: 100
+      required:
+      - created_at
+      - id
+      - tipo_afastamento
+      - updated_at
+    TipoAnexo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        desc:
+          type: string
+          maxLength: 64
+      required:
+      - desc
+      - id
+    TipoBanco:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 60
+        codigo:
+          type: string
+          maxLength: 3
+        segmento:
+          type: integer
+          nullable: true
+      required:
+      - codigo
+      - created_at
+      - id
+      - nome
+      - updated_at
+    TipoCargoTerceirizado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        nome:
+          type: string
+          maxLength: 100
+        descricao:
+          type: string
+          maxLength: 300
+      required:
+      - created_at
+      - descricao
+      - id
+      - nome
+      - updated_at
+    TipoConta:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tipo_conta:
+          type: string
+          maxLength: 15
+      required:
+      - created_at
+      - id
+      - tipo_conta
+      - updated_at
+    TipoContato:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 32
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    TipoCurso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 100
+        escolaridade:
+          type: integer
+      required:
+      - created_at
+      - desc
+      - escolaridade
+      - id
+      - updated_at
+    TipoDeEndereco:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        desc:
+          type: string
+          readOnly: true
+          title: Tipo de local
+      required:
+      - desc
+      - id
+    TipoDeLocal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        desc:
+          type: string
+          readOnly: true
+          title: Tipo de local
+        mostra_em_procedimento:
+          type: boolean
+          readOnly: true
+      required:
+      - desc
+      - id
+      - mostra_em_procedimento
+    TipoDependentes:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 128
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    TipoDiaria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        tipo:
+          type: string
+          maxLength: 45
+      required:
+      - id
+      - tipo
+    TipoDocumento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        tipo_documento:
+          type: string
+          readOnly: true
+          title: Tipo de documento
+      required:
+      - id
+      - tipo_documento
+    TipoElogio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tipo_elogio:
+          type: string
+          maxLength: 50
+      required:
+      - created_at
+      - id
+      - tipo_elogio
+      - updated_at
+    TipoEquipamentoBelico:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    TipoFardamento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tipo:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - tipo
+      - updated_at
+    TipoFerias:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 64
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    TipoGeo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        tipo_geo:
+          type: string
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - is_active
+      - tipo_geo
+      - updated_at
+    TipoLotacaoFuncao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 30
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    TipoNomeacao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 45
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    TipoOrigemVaga:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        desc:
+          type: string
+          maxLength: 45
+      required:
+      - created_at
+      - desc
+      - id
+      - updated_at
+    TipoPenalidade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        deleted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        tipo_penalidade:
+          type: string
+          readOnly: true
+      required:
+      - deleted_at
+      - id
+      - tipo_penalidade
+    TipoPorteArma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        nome:
+          type: string
+          maxLength: 500
+      required:
+      - created_at
+      - id
+      - nome
+      - updated_at
+    TipoProcesso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        deleted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        tipo_processo:
+          type: string
+          readOnly: true
+      required:
+      - deleted_at
+      - id
+      - tipo_processo
+    TipoPromocao:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        tipo:
+          type: string
+          maxLength: 60
+      required:
+      - created_at
+      - id
+      - tipo
+      - updated_at
+    TipoUnidade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          readOnly: true
+          title: Ativo?
+        tipo_unidade:
+          type: string
+          readOnly: true
+        sigla:
+          type: string
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - is_active
+      - sigla
+      - tipo_unidade
+      - updated_at
+    TituloEleitor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        numero:
+          type: string
+          maxLength: 45
+        zona:
+          type: string
+          maxLength: 45
+        secao:
+          type: string
+          maxLength: 45
+        uf:
+          type: integer
+          nullable: true
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - id
+      - numero
+      - pessoa
+      - secao
+      - updated_at
+      - zona
+    TokenObtainPair:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - email
+      - password
+      - refresh
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - token
+    TramitacaoDiaria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        anexos:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnexoDiariaCreate'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+        execucao_antecidada:
+          type: boolean
+        objetivo:
+          type: string
+        numero:
+          type: string
+          readOnly: true
+        delegacia_hash:
+          type: string
+          readOnly: true
+        delegacia_data:
+          type: string
+          format: date-time
+          nullable: true
+        departamento_hash:
+          type: string
+          readOnly: true
+        departamento_data:
+          type: string
+          format: date-time
+          nullable: true
+        departamento_justificativa:
+          type: string
+        departamento_aceito:
+          type: boolean
+        dpgi_hash:
+          type: string
+          readOnly: true
+        dpgi_data:
+          type: string
+          format: date-time
+          nullable: true
+        dpgi_justificativa:
+          type: string
+        dpgi_aceito:
+          type: boolean
+        difin_hash:
+          type: string
+          readOnly: true
+        difin_data:
+          type: string
+          format: date-time
+          nullable: true
+        difin_justificativa:
+          type: string
+        difin_aceito:
+          type: boolean
+        origem_cidade:
+          type: integer
+        destino_cidade:
+          type: integer
+        tipo_diaria:
+          type: integer
+          nullable: true
+        unidade:
+          type: integer
+        unidade_interestadual:
+          type: integer
+          nullable: true
+        operacao_diaria:
+          type: integer
+          nullable: true
+        situacao:
+          type: integer
+        delegacia_pessoa:
+          type: integer
+          nullable: true
+        departamento_pessoa:
+          type: integer
+          nullable: true
+        dpgi_pessoa:
+          type: integer
+          nullable: true
+        difin_pessoa:
+          type: integer
+          nullable: true
+        numero_pedido:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - delegacia_hash
+      - departamento_hash
+      - destino_cidade
+      - difin_hash
+      - dpgi_hash
+      - id
+      - numero
+      - numero_pedido
+      - objetivo
+      - origem_cidade
+      - unidade
+      - updated_at
+    TramitacaoDiariaAcompanhamento:
+      type: object
+      properties:
+        tramitacao_diaria:
+          $ref: '#/components/schemas/TramitacaoDiariaSemHash'
+        participantes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParticipanteDiariaComLink'
+        anexos:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnexoDiariaComLink'
+      required:
+      - anexos
+      - participantes
+      - tramitacao_diaria
+    TramitacaoDiariaAcompanhamentoSimplificado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        situacao:
+          type: integer
+        numero:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        unidade:
+          type: integer
+      required:
+      - created_at
+      - id
+      - numero
+      - unidade
+    TramitacaoDiariaInicio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        enviar:
+          type: boolean
+        participantes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TramitacaoDiariaInicioParticipantes'
+        anexos:
+          type: array
+          items:
+            $ref: '#/components/schemas/TramitacaoDiariaInicioAnexos'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+        execucao_antecidada:
+          type: boolean
+        objetivo:
+          type: string
+        origem_cidade:
+          type: integer
+        destino_cidade:
+          type: integer
+        tipo_diaria:
+          type: integer
+          nullable: true
+        unidade_interestadual:
+          type: integer
+          nullable: true
+        operacao_diaria:
+          type: integer
+          nullable: true
+      required:
+      - anexos
+      - created_at
+      - destino_cidade
+      - enviar
+      - id
+      - objetivo
+      - origem_cidade
+      - participantes
+      - updated_at
+    TramitacaoDiariaInicioAnexos:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        nome:
+          type: string
+          maxLength: 60
+        file_system:
+          type: string
+          maxLength: 60
+        tipo_de_anexo:
+          type: integer
+      required:
+      - created_at
+      - file_system
+      - id
+      - tipo_de_anexo
+      - updated_at
+    TramitacaoDiariaInicioParticipantes:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+        quantidade_diarias:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,1})?$
+        valor_unitario:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - id
+      - pessoa
+      - quantidade_diarias
+      - updated_at
+    TramitacaoDiariaSemHash:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        origem_estado:
+          type: integer
+        destino_estado:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+        execucao_antecidada:
+          type: boolean
+        objetivo:
+          type: string
+        numero:
+          type: string
+          readOnly: true
+        delegacia_data:
+          type: string
+          format: date-time
+          nullable: true
+        departamento_data:
+          type: string
+          format: date-time
+          nullable: true
+        departamento_justificativa:
+          type: string
+        departamento_aceito:
+          type: boolean
+        dpgi_data:
+          type: string
+          format: date-time
+          nullable: true
+        dpgi_justificativa:
+          type: string
+        dpgi_aceito:
+          type: boolean
+        difin_data:
+          type: string
+          format: date-time
+          nullable: true
+        difin_justificativa:
+          type: string
+        difin_aceito:
+          type: boolean
+        origem_cidade:
+          type: integer
+        destino_cidade:
+          type: integer
+        tipo_diaria:
+          type: integer
+          nullable: true
+        unidade:
+          type: integer
+        unidade_interestadual:
+          type: integer
+          nullable: true
+        operacao_diaria:
+          type: integer
+          nullable: true
+        situacao:
+          type: integer
+        delegacia_pessoa:
+          type: integer
+          nullable: true
+        departamento_pessoa:
+          type: integer
+          nullable: true
+        dpgi_pessoa:
+          type: integer
+          nullable: true
+        difin_pessoa:
+          type: integer
+          nullable: true
+        numero_pedido:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - destino_cidade
+      - id
+      - numero
+      - numero_pedido
+      - objetivo
+      - origem_cidade
+      - unidade
+      - updated_at
+    TramitacaoDiariaVerificacaoHash:
+      type: object
+      properties:
+        delegacia_hash:
+          type: string
+          maxLength: 64
+        delegacia_hash_verificado:
+          type: boolean
+          default: false
+        departamento_hash:
+          type: string
+          maxLength: 64
+        departamento_hash_verificado:
+          type: boolean
+          default: false
+        dpgi_hash:
+          type: string
+          maxLength: 64
+        dpgi_hash_verificado:
+          type: boolean
+          default: false
+        difin_hash:
+          type: string
+          maxLength: 64
+        difin_hash_verificado:
+          type: boolean
+          default: false
+    Unidade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          readOnly: true
+        sigla:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          readOnly: true
+        telefone:
+          type: string
+          readOnly: true
+        cod_unidade_sigi:
+          type: string
+          readOnly: true
+          nullable: true
+        tipo_unidade:
+          type: integer
+          readOnly: true
+          nullable: true
+        endereco:
+          type: integer
+          readOnly: true
+          nullable: true
+        id_unidade_superior:
+          type: integer
+          readOnly: true
+          nullable: true
+        ais:
+          type: integer
+          readOnly: true
+          nullable: true
+        externo:
+          type: boolean
+          readOnly: true
+        unidade_ativa:
+          type: boolean
+          readOnly: true
+        registra_bo:
+          type: boolean
+          readOnly: true
+        registra_procedimento:
+          type: boolean
+          readOnly: true
+        geo:
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Point
+              coordinates:
+                type: array
+                items:
+                  type: number
+                  format: float
+                example:
+                - 12.9721
+                - 77.5933
+                minItems: 2
+                maxItems: 3
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - LineString
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+                    format: float
+                  example:
+                  - 12.9721
+                  - 77.5933
+                  minItems: 2
+                  maxItems: 3
+                example:
+                - - 22.4707
+                  - 70.0577
+                - - 12.9721
+                  - 77.5933
+                minItems: 2
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Polygon
+              coordinates:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+                    example:
+                    - 12.9721
+                    - 77.5933
+                    minItems: 2
+                    maxItems: 3
+                  example:
+                  - - 22.4707
+                    - 70.0577
+                  - - 12.9721
+                    - 77.5933
+                  minItems: 4
+                example:
+                - - - 0.0
+                    - 0.0
+                  - - 0.0
+                    - 50.0
+                  - - 50.0
+                    - 50.0
+                  - - 50.0
+                    - 0.0
+                  - - 0.0
+                    - 0.0
+          readOnly: true
+          nullable: true
+      required:
+      - ais
+      - cod_unidade_sigi
+      - email
+      - endereco
+      - externo
+      - geo
+      - id
+      - id_unidade_superior
+      - nome
+      - registra_bo
+      - registra_procedimento
+      - sigla
+      - telefone
+      - tipo_unidade
+      - unidade_ativa
+    UnidadeExternaDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 300
+        sigla_tradicional:
+          type: string
+          maxLength: 20
+        sigla:
+          type: string
+          maxLength: 10
+        unidade_pai:
+          type: string
+          readOnly: true
+        municipio:
+          type: string
+          readOnly: true
+        telefone:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - municipio
+      - nome
+      - telefone
+      - unidade_pai
+    UnidadeExternaList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 300
+        sigla_tradicional:
+          type: string
+          maxLength: 20
+        sigla:
+          type: string
+          maxLength: 10
+      required:
+      - id
+      - nome
+    UsernameResetConfirm:
+      type: object
+      properties:
+        new_email:
+          type: string
+          format: email
+          title: Email
+          maxLength: 254
+      required:
+      - new_email
+    UsuarioEpol:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        nome:
+          type: string
+        sobrenome:
+          type: string
+        cpf:
+          type: string
+        senha:
+          type: string
+          title: Senha
+      required:
+      - cpf
+      - email
+      - nome
+      - senha
+      - sobrenome
+    UsuarioKeycloakSistema:
+      type: object
+      properties:
+        pessoa:
+          type: integer
+        perfis_ativos:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerfilSistema'
+          readOnly: true
+      required:
+      - perfis_ativos
+      - pessoa
+    UsuarioPerfilSistema:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        user:
+          type: integer
+        perfil:
+          type: integer
+      required:
+      - created_at
+      - id
+      - perfil
+      - updated_at
+      - user
+    UsuarioRH:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        email_verified_at:
+          type: string
+          format: date-time
+          nullable: true
+        password:
+          type: string
+          maxLength: 255
+        two_factor_secret:
+          type: string
+        two_factor_recovery_codes:
+          type: string
+        remember_token:
+          type: string
+          maxLength: 100
+        pessoa:
+          type: integer
+          nullable: true
+        terceirizado:
+          type: integer
+          nullable: true
+        user_auth:
+          type: integer
+      required:
+      - created_at
+      - email
+      - id
+      - name
+      - password
+      - updated_at
+      - user_auth
+    ValorExtrasJudicial:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Criação
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Data de Modificação
+        is_active:
+          type: boolean
+          title: Ativo?
+        valor:
+          type: number
+          format: double
+        data_inicio:
+          type: string
+          format: date
+        data_fim:
+          type: string
+          format: date
+          nullable: true
+        pessoa:
+          type: integer
+      required:
+      - created_at
+      - data_inicio
+      - id
+      - pessoa
+      - updated_at
+      - valor
+  securitySchemes:
+    CustomKeycloakAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
